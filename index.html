@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>  
+	<meta name="author" content="Carolina Damián Fernández">
+    <meta name="description" content="Portfolio"> 
+	<link rel = "icon" href = "./src/queso.png">
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team DRAC</title>
+  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/style.css" >
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+		
+	<script>
+	$(document).ready(function() {
+		$(".navbar-nav li a").click(function(event) {
+			$(".navbar-collapse").collapse('hide');
+		});
+		$('.navbar-nav > li > a').click(function(event){
+		event.preventDefault();//stop browser to take action for clicked anchor
+
+		//get displaying tab content jQuery selector
+		var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');
+
+		//find actived navigation and remove 'active' css
+		var actived_nav = $('.navbar-nav > li.active');
+		actived_nav.removeClass('active');
+
+		//add 'active' css into clicked navigation
+		$(this).parents('li').addClass('active');
+
+		//hide displaying tab content
+		$(active_tab_selector).removeClass('active');
+		$(active_tab_selector).addClass('hide');
+
+		//show target tab content
+		var target_tab_selector = $(this).attr('href');
+		$(target_tab_selector).removeClass('hide');
+		$(target_tab_selector).addClass('active');
+	     });
+	  });
+	</script>
+	
+	<script>
+		$(document).ready(function() {
+		  $("[rel='tooltip2']").tooltip();
+		  $('.mydemo').hover(function(){    
+		  $(this).find('figcaption').slideDown(350); //.fadeIn(350)  
+				},   
+		  function(){$(this).find('figcaption').slideUp(300); //.fadeOut(300) 
+				}   
+				); 
+		});
+	</script> 
+
+
+  </head>
+  <body>
+  
+  <!-- BARRA DE ARRIBA -->
+  
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  
+      <div class="container">	  
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+			 <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            
+          </button>
+          <a class="navbar-brand">TEAM DRAC</a>                 <!-- CAMBIAR POR IMAGEN -->
+        </div>
+		
+        <div id="navbar" class="collapse navbar-collapse">
+			  <ul class="nav navbar-nav">
+				<li class="active"><a href="#home">Home</a></li>
+				
+				<li><a class="btn btn-primary dropdown-toggle" href="#games" data-toggle="dropdown">Games</a>
+					<ul class="dropdown-menu">					
+							<li><a href="#ratonera">La Ratonera</a></li>	
+							<li><a href="#unity">Unity</a></li>	
+					</ul>
+				</li>
+				
+				<li><a href="#about">About us</a></li>	
+				<li><a href="#contact">Contact</a></li>						
+			  </ul>		
+        </div>	 
+		</div>     
+   </nav>  
+   
+   <!-- FIN BARRA DE ARRIBA -->
+   
+   
+  <!-- SECCION GAMES  -->
+	<section id="games" class="tab-content hide">	
+	<div class="container">
+		<div class="titulo-home"> 
+			<h1>GAMES</h1>	
+		</div>			
+	</div>
+	</section>	
+	
+	<!-- FIN GAMES  -->
+
+   
+   
+   
+   
+  
+ 	<!-- =================    SECCION HOME    ==================== -->		 
+  
+  <section id="home" class="tab-content active">
+  <div class="container">
+		<div class="titulo-home"> 
+			<h1>Welcome to our site</h1>	
+		</div>		
+	
+	<div class="row">
+		
+			<!-- =================      CARRUSEL     ==================== -->
+		<div class="col-lg-12 col-md-10">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			  <ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			  </ol>
+
+			  <div class="carousel-inner">
+				<div class="item active">
+				  <img src="http://via.placeholder.com/640x480" alt="Character Design">
+				</div>
+
+				<div class="item">
+				  <img src="http://via.placeholder.com/640x480" alt="3D Render">
+				</div>
+
+				<div class="item">
+				  <img src="http://via.placeholder.com/640x480" alt="Concept Art">
+				</div>
+			  </div>
+			  
+			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			  </a>
+			  <a class="carousel-control right" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			  </a>
+			</div>
+		</div>
+		
+		<!-- FIN CARRUSEL -->
+		
+	</div>
+
+	<!-- FILA DE THUMBNAILS -->
+      <div class="row">	
+	  <ul class="list-inline text-center">	  
+	  
+		<div class="thumbnails col-md-6 col-sm-6">		
+			<li data-target="#myModal1" data-toggle="modal">			
+				<div class="thumbnail">		
+						<a data-slide-to="0" href="#myGallery1">
+						<img src="http://via.placeholder.com/400x150">                              
+						<div class="caption">
+							<h3>Projects</h3>
+						</div>
+						</a>
+				</div>  
+			</li>
+		</div>
+		
+		<div class="thumbnails col-md-6 col-sm-6">
+			<li data-target="#about" data-toggle="collapse">
+				<div class="thumbnail">
+						<!--<a data-slide-to="0" href="#myGallery2">-->
+						<a data-slide-to="0" href="#about"> 
+							<img src="http://via.placeholder.com/400x150">   
+							<div class="caption">
+								<h3>About Us</h3>
+							</div> 
+						</a>									
+				</div>				
+			</li>
+		</div>
+		<!--
+		<div class="thumbnails col-md-3 col-sm-3">
+			<li data-target="#myModal3" data-toggle="modal">				                    
+				<div class="thumbnail"> 				
+						<a data-slide-to="0" href="#myGallery3">
+						<img class="img-responsive adjust" src="./src/3d/detalles_habitacion.jpg" /> 						
+						<div class="caption">
+							<h3>Level Design</h3>
+						</div> 						
+						</a>
+				</div>
+			</li>			
+		</div>
+		
+		
+		<div class="thumbnails col-md-3 col-sm-3">
+			<li data-target="#myModal4" data-toggle="modal">
+				    <div class="thumbnail">                  
+						<a data-slide-to="0" href="#myGallery4">
+						<img class="img-responsive adjust" src="./src/games/unreal01.png" />
+						<div class="caption">
+							<h3>Games</h3>
+						</div>
+						</a>
+					</div> 
+			</li>
+		</div>
+		
+		-->
+    </ul>
+	
+	
+	<!--      GALERÍAS      -->
+	
+		
+	<!--begin modal1 window-->
+		<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal1" role="dialog" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="pull-left">Projects</div>
+						<button class="close" data-dismiss="modal" title="Close" type="button">
+						<span class="glyphicon glyphicon-remove"></span></button>
+					</div>
+					<div class="modal-body">					
+					<!--begin myGallery1 -->
+						<h2> La Ratonera </h2>
+						<!--begin carousel 1 -->
+						<div class="carousel slide" data-interval="false" id="myGallery1">
+							
+							<div class="carousel-inner">
+								<div class="item active">
+									<img alt="item1" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>La Ratonera</h3>
+										<p>Imagen 1</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item2" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>La Ratonera</h3>
+										<p>Imagen 2</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item3" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>La Ratonera</h3>
+										<p>Imagen 3</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item4" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>La Ratonera</h3>
+										<p>Imagen 4</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item5" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>La Ratonera</h3>
+										<p>Imagen 5 </p>
+									</div>
+								</div>	
+								<div class="item">
+									<img alt="item6" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>La Ratonera</h3>
+										<p>Imagen 6</p>
+									</div>
+								</div>	
+							</div>	<!--end of items-->						
+						</div> <!--end carousel-1-->
+					
+						
+						<!--Begin Previous and Next buttons-->
+						<a class="left carousel-control" data-slide="prev" href="#myGallery1" role="button">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</a> 
+						<a class="right carousel-control" data-slide="next" href="#myGallery1" role="button">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a> 
+						
+						<a class = "carruselFooter" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Descargar La Ratonera</a>
+					<!--end myGallery1-->
+							
+					<!--begin myGallery2-->
+						<h2 style = "margin-top: 50px"> Juego Unity </h2>
+						<!--begin carousel 2 -->
+						<div class="carousel slide" data-interval="false" id="myGallery2">
+						
+							<div class="carousel-inner">
+								<div class="item active">
+									<img alt="item1" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>Proyecto Unity</h3>
+										<p>Imagen 1</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item2" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>Proyecto Unity</h3>
+										<p>Imagen 2</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item3" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>Proyecto Unity</h3>
+										<p>Imagen 3</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item4" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>Proyecto Unity</h3>
+										<p>Imagen 4</p>
+									</div>
+								</div>
+								<div class="item">
+									<img alt="item5" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>Proyecto Unity</h3>
+										<p>Imagen 5 </p>
+									</div>
+								</div>	
+								<div class="item">
+									<img alt="item6" src="http://via.placeholder.com/480x320" />
+									<div class="carousel-caption">
+										<h3>Proyecto Unity</h3>
+										<p>Imagen 6</p>
+									</div>
+								</div>	
+							</div>	<!--end of items-->
+										
+						</div> <!--end carousel-2-->
+						
+						<!--Begin Previous and Next buttons-->
+						<a class="left carousel-control" data-slide="prev" href="#myGallery2" role="button">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</a> 
+						<a class="right carousel-control" data-slide="next" href="#myGallery2" role="button">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a> 
+						<a class = "carruselFooter" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> Descargar juego Unity </a>
+					<!--end myGallery2-->	
+					</div>
+				</div><!--end modal-body-->
+						
+			</div><!--end modal-content-->
+				<!--end modal-dialoge-->
+		</div>	
+			
+	<!--end myModal1-->	
+	
+		
+	<!--begin modal2 window-->
+		<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal2" role="dialog" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content" id = "modalContact">
+					<div class="modal-header">
+						<div class="pull-left">About us</div>
+						<button class="close" data-dismiss="modal" title="Close" type="button">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</div>
+					<div class="modal-body">
+					<!--
+					
+					<!--begin carousel 2 -/->
+						<div class="carousel slide" data-interval="false" id="myGallery2">
+							<div class="carousel-inner">
+								<div class="item active"><img alt="item1" src="./src/3d/render004.jpg" />
+									<div class="carousel-caption">
+										<h3>Room</h3>
+										<p>Daytime</p>
+									</div>
+								</div>
+								<div class="item"><img alt="item2" src="./src/3d/render002.jpg" />
+									<div class="carousel-caption">
+										<h3>Room</h3>
+										<p>Night Time</p>
+									</div>
+								</div>
+								<div class="item"><img alt="item3" src="./src/3d/render08.jpg" />
+									<div class="carousel-caption">
+										<h3>Cinema</h3>
+										<p>Interior</p>
+									</div>
+								</div>	
+								<div class="item"><img alt="item4" src="./src/3d/render005.jpg" />
+									<div class="carousel-caption">
+										<h3>Cliff with lighthouse</h3>
+										<p>Daytime</p>
+									</div>
+								</div>
+								<div class="item"><img alt="item5" src="./src/3d/render14.jpg" />
+									<div class="carousel-caption">
+										<h3>Cliff with lighthouse</h3>
+										<p>Night time</p>
+									</div>
+								</div>
+															
+									<!--end of items-/-></div>
+								<!--end carousel-2-/->				
+							
+							</div>
+							<!--Begin Previous and Next buttons-/-><a class="left carousel-control" data-slide="prev" href="#myGallery2" role="button">
+							<span class="glyphicon glyphicon-chevron-left"></span></a> 
+							<a class="right carousel-control" data-slide="next" href="#myGallery2" role="button">
+							<span class="glyphicon glyphicon-chevron-right"></span></a> <!--end myGallery2-/->
+					-->
+					<p> Tonto el que lo lea </p>
+					</div>
+				</div><!--end modal-body-->
+						
+			</div><!--end modal-content-->
+			<!--end modal-dialoge-->
+		</div><!--end myModal2-->
+			
+		
+	 </div> <!--end row-->
+	 
+	 <!-- FIN DE FILA DE THUMBNAILS-->
+	 
+     </div><!-- /container -->
+	
+	</section> <!-- FIN HOME -->
+	
+		
+	
+	 <!-- SECCION ABOUT US  -->	
+	 
+	<section id="about" class="tab-content hide">
+	<div class="container">
+		
+		<div class="titulo-about"> <h1>	About Us</h1></div>					
+		<div class="descripcion-grupo col-md-8 col-sm-6">
+			<h3>We are a group of  'Videogame Design and Development' students from Madrid, Spain. </h3>
+		</div>	
+		
+	</div>		
+
+		<div class="row">
+			 <!-- PERFIL RAQUEL  -->	
+			<div class="perfiles col-lg-2 col-md-4 col-sm-4">
+			<div class="imagen-perfil">
+				  <img class="img-circle" src="./src/raquel.jpg" width="150">
+			</div>			
+			<div class="descripcion ">
+				<h3>Raquel Más García </h3>
+				<h4>Programmer </h4>
+			</div>
+			</div>				
+						
+			<div class="perfiles col-lg-2 col-md-4 col-sm-4">
+				<div class="imagen-perfil">
+					  <img class="img-circle" src="./src/dani.jpg" width="150">
+				</div>			
+				<div class="descripcion">
+					<h3>Daniel Franco Luzón </h3>
+					<h4> Game Designer </h4>
+				</div>			
+			</div>
+		
+		<div class="perfiles col-lg-2 col-md-4 col-sm-4">
+			<div class="imagen-perfil">
+			  <img class="img-circle" src="./src/carol.jpg" width="150">
+			</div>			
+			<div class="descripcion">
+				<h3>Carolina Damián Fernández</h3>
+				<h4>Artist </h4>
+			</div>	  
+		</div>
+
+		<div class="perfiles col-lg-2 col-md-4 col-sm-4">
+			<div class="imagen-perfil">
+			  <img class="img-circle" src="./src/alvaro.jpg" width="150">
+			</div>			
+			<div class="descripcion">
+				<h3>Álvaro Navas Castillo</h3>
+				<h4>Web Designer </h4>
+			</div>	  
+		</div>	
+		</div>	
+	</section>
+	
+	<!-- FIN ABOUT US  -->
+	
+	
+	
+	<!-- SECCION CONTACT  -->
+	<section id="contact" class="tab-content hide">	
+	<div class="container">
+		<div class="titulo-contact"> <h1> Contact </h1>
+			<div class="contactar">
+			
+				<div class="rrss col-md-6 >
+					<a href="mailto:teamdrac010@gmail.com" style="color:#FFFFFF;">
+					  <div>
+							<img class="img-circle" src="./src/mail.jpg" width="100" role="button"></img>
+							<h3 >e-mail</h3>
+					  </div>
+					 </a> 
+				</div>
+								
+				<div class="rrss col-md-6 >
+					<a href="https://www.youtube.com/channel/UCFQNH7NS6snQhWINuBGS_SA" style="color:#FFFFFF;">
+					  <div>
+							<img class="img-circle" src="./src/youtube.png" width="100" role="button"></img>
+							<h3 >YouTube</h3>
+					  </div>
+					 </a> 
+				</div>
+					
+			</div>
+		</div>		
+	</div>
+	</section>	
+	
+	<!-- FIN CONTACT  -->
+	
+	
+	<footer class="site-footer fixed-bottom">
+		<p background: white; >&copy; 2017 Carolina Damián Fernández </p>	
+	</footer> 
+	
+	
+  </body>
+  
+  
+</html>
