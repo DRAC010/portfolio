@@ -1,0 +1,185 @@
+		body{
+			background-image: url('../src/background.jpg');
+			-webkit-background-size: cover;
+		}
+		
+		
+		
+		
+		
+		
+		.navbar{
+			color: #FFFFFF;
+		}
+
+		.tab-content.hide{
+			display: none;
+		}
+		
+		.tab-content.active{
+			display: block;
+		}
+		
+		
+		
+		
+		.titulo-home{
+			text-align: center;
+			margin-top:70px;
+			color: #FFFFFF;
+			font-family: "Georgia";
+		}
+		
+		.titulo-about{
+			text-align: center;
+			margin-top:75px;
+			color: #FFFFFF;
+			font-family: "Georgia";
+		}
+		
+		.descripcion-grupo{			
+			margin-top: 25px;
+			margin-left:20%;	
+			background-color: rgba(50, 70, 90, 0.6);			
+			border-radius: 45px 0px 45px 0px;
+			padding: 10px;
+			color: #FFFFFF;
+			text-align: center;
+			font-family: "Georgia";
+		}	
+		
+		.perfiles{
+			text-align: center;
+			margin-top: 25px;
+			margin-left:7%;			 
+		}
+		
+		
+		.imagen-perfil{
+			 margin-top: 25px;
+			 margin-left:10%;	
+			
+		}
+	
+		.descripcion{			
+			margin-top: 25px;
+			margin-left:10%;	
+			background-color: rgba(50, 70, 90, 0.6);			
+			border-radius: 45px 0px 45px 0px;
+			padding: 10px;
+			color: #FFFFFF;
+			text-align: center;
+			font-family: "Georgia";
+		}	
+		
+		.titulo-contact{
+			margin-top:70px;
+			color: #FFFFFF;
+			font-family: "Georgia";
+			text-align: center;
+		}
+		
+		.contactar{		
+			text-align: center;
+			margin-top: 10%;
+			margin-left: 20%;
+			margin-right: 20%;
+		}	
+		
+		
+		.rrss:hover {
+			-webkit-transform:scale(1.25); /* Safari and Chrome */
+			-moz-transform:scale(1.25); /* Firefox */
+			-ms-transform:scale(1.25); /* IE 9 */
+			-o-transform:scale(1.25); /* Opera */
+			 transform:scale(1.25);
+		}
+		
+			
+				
+		.carousel{
+			overflow: hidden;
+			background: #2f4357;
+			border-radius: 25px 25px 25px 25px;
+			margin-top: 20px;
+			max-height: 600px;
+			max-width: 1080px;
+		}
+		
+		.carousel-control.left{
+			background: -webkit-linear-gradient(right, rgba(0, 0, 0, .001) 0%, rgba(0, 0, 0, .6) 100%);
+			
+			border-radius: 25px 0px 0px 25px;
+			
+		}
+		.carousel-control.right{			
+			background: -webkit-linear-gradient(left, rgba(0, 0, 0, .001) 0%, rgba(0, 0, 0, .6) 100%);
+			border-radius: 0px 25px 25px 0px;			
+		}
+		
+		
+		.carousel .item{						
+			overflow: hidden;		
+			min-height: 100px;  /*Evita que el carrusel se distorsione si por alguna razón la imagen no se carga*/
+			/*margin: 0 auto;*/
+		}
+		
+		.carousel .item img{
+			/*height: 100%;
+			width: 100%;*/
+			border-radius: 25px 25px 25px 25px;
+			margin: 0 auto; /* Alinea la imagen horizontalmente al centro */
+		}
+				
+		.thumbnail {
+			border-radius: 0px 0px 18px 18px;
+			box-shadow: 10px 10px black;
+			margin: 0 auto;
+			margin-top: 50px;
+			max-width: 400px;
+		}
+		
+		
+		.img-responsive{			
+			border-radius: 25px 0px 25px 0px;
+		}	
+
+
+		.img-responsive:hover {
+			 transform:scale(1.25);
+		}
+		
+		.modal-dialog {
+			max-height: 2160px;
+			max-width: 1500px;
+			/*overflow-y: auto;*/
+		}
+		
+		.div{
+			color:#c0c0c0;
+		}
+		
+		
+		
+		.site-footer{
+			position: fixed;
+			bottom: 0;
+			height: 20px;			
+			width: 100%;			
+			background-color: lightgrey; 
+			text-align: center;
+		}
+		
+		.carruselFooter{
+			position: absolute;
+			left:50%;
+			margin-right: -50%;
+			transform: translate(-50%, 0%);
+		}
+		
+		#myCarousel {
+			height: 100%;			
+			width: 70%;
+			margin: 0 auto;
+		}
+		
