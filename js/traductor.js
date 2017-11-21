@@ -1,11 +1,11 @@
 var arrLang = {
-	'es': {
+	'id_esp': {
 		'1 jugador': '1 JUGADOR',
 		'2 jugadores': '2 JUGADORES',
 		'puntuaciones': 'PUNTUACIONES',
 		'creditos': 'CREDITOS'
 	},
-	'en': {
+	'id_eng': {
 		'1 jugador': 'SINGLE PLAYER',
 		'2 jugadores': 'SPLIT SCREEN',
 		'puntuaciones': 'SCORES',
