@@ -11,7 +11,7 @@ var arrLang = {
 		'puntuaciones': 'SCORES',
 		'creditos': 'CREDITS'
 	}
-}
+};
 
 $(function(){
 	$('.idiomas').click(function(){
