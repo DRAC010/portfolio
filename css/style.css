@@ -5,9 +5,6 @@
 		
 		
 		
-		
-		
-		
 		.navbar{
 			color: #FFFFFF;
 		}
@@ -18,9 +15,7 @@
 		
 		.tab-content.active{
 			display: block;
-		}
-		
-		
+		}		
 		
 		
 		.titulo-home{
@@ -57,13 +52,23 @@
 		
 		.imagen-perfil{
 			 margin-top: 25px;
-			 margin-left:10%;	
-			
+			 margin-left:10%;				
 		}
 	
 		.descripcion{			
 			margin-top: 25px;
 			margin-left:10%;	
+			background-color: rgba(50, 70, 90, 0.6);			
+			border-radius: 45px 0px 45px 0px;
+			padding: 10px;
+			color: #FFFFFF;
+			text-align: center;
+			font-family: "Georgia";
+		}	
+		
+		.descripcion-imagen{
+			margin-top:10%;
+			margin-left:5%;	
 			background-color: rgba(50, 70, 90, 0.6);			
 			border-radius: 45px 0px 45px 0px;
 			padding: 10px;
@@ -101,9 +106,9 @@
 			overflow: hidden;
 			background: #2f4357;
 			border-radius: 25px 25px 25px 25px;
-			margin-top: 20px;
-			max-height: 600px;
-			max-width: 1080px;
+			margin-top: 25px;
+			max-height: 700px;
+			max-width: 700px;
 		}
 		
 		.carousel-control.left{
@@ -121,7 +126,7 @@
 		.carousel .item{						
 			overflow: hidden;		
 			min-height: 100px;  /*Evita que el carrusel se distorsione si por alguna razón la imagen no se carga*/
-			/*margin: 0 auto;*/
+			margin: 0 auto;
 		}
 		
 		.carousel .item img{
@@ -139,14 +144,38 @@
 			max-width: 400px;
 		}
 		
+		.thumbnail:hover {
+			 transform:scale(1.10);
+		}
+		
+		
+		.container-ratonera{
+			text-align: center;
+			margin-top:20px;
+			color: #FFFFFF;
+			font-family: "Georgia";
+		}
+		.imagenes{
+			margin-top: 15px;
+			
+			max-height: 400px;
+			min-height: 100px;
+		}
+		
+		
+		.contenido-fila{
+			margin-top: 5%;
+		}
+			
 		
 		.img-responsive{			
 			border-radius: 25px 0px 25px 0px;
 		}	
 
 
-		.img-responsive:hover {
-			 transform:scale(1.25);
+		.img-responsive:hover {			
+			-webkit-transform:scale(1.10);
+			-moz-transform:scale(1.10);
 		}
 		
 		.modal-dialog {
@@ -159,6 +188,10 @@
 			color:#c0c0c0;
 		}
 		
+		.botonPlay{			
+			margin-left: 35%;
+
+		}	
 		
 		
 		.site-footer{
