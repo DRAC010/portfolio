@@ -1,4 +1,33 @@
+*{
+	background: LightSkyBlue;
+}
+
 .wrapper{
-	width:1000px;
+	width:1050px;
 	margin:auto;
 }
+
+.boton{
+	font-size: 1.4em;
+	font-family: "Comic Sans MS";
+	font-weight: bolder;
+	border:none; 
+	width:200px; 
+	height:80px; 
+	padding:0;
+	text-shadow: 1px 1px 0px white;
+	float: left;
+	clear: left;
+	margin-right: -150px;
+}
+
+.boton:hover{
+	color:white;
+	text-shadow: 1px 1px 0 black;
+}
+
+.boton:active{
+	color:grey;
+	text-shadow: -1px -1px 0 black;
+}
+
