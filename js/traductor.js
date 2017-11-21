@@ -19,6 +19,7 @@ $(function(){
 		
 		$('.boton').each(function(index, element){
 			$(this).attr('value',arrLang[lang][$(this).attr('key')]);
+			//00:01
 		});
 	});
 });
