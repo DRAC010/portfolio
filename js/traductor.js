@@ -17,8 +17,8 @@ $(function(){
 	$('.idiomas').click(function(){
 		var lang = $(this).attr('id');
 		
-		/*$('.boton').each(function(index, element){
+		$('.boton').each(function(index, element){
 			$(this).attr('value',arrLang[lang][$(this).attr('key')]);
-		});*/
+		});
 	});
 });
