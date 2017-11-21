@@ -111,7 +111,7 @@
 				//imagen con todos los gráficos
 				var imagenSprites = new Image();
 				//ruta de la imagen
-				imagenSprites.src = "../img/spritesx64.png"; 
+				imagenSprites.src = "./img/spritesx64.png"; 
 				//inicializamos la lista
 				listaSprites = [];
 				
@@ -132,8 +132,7 @@
 				//recibimos el codigo de la tecla pulsada y actualizamos la acción
 				switch(e.keyCode)
 				{
-					case 37: //
-						A IZQUIERDA
+					case 37: //FLECHA IZQUIERDA
 						mundo.pulsacion=IZQUIERDA;
 						break;
 					case 39: //FLECHA DERECHA
@@ -149,8 +148,10 @@
 			 <input type='button' class='boton' value='VOLVER' onClick="location.href='menuRatonera.html'" 
 				style="background: url('../img/flecha.png') left center no-repeat; background-size:cover; "/>
 			<canvas width='320' height='576'></canvas>
-			<input type='button' class='boton' value='REINICIAR' onClick="location.reload(true)'" 			       
+			<input type='button' class='boton' value='REINICIAR' onClick="location.reload(true)" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
+	
+    
 		</div>
 	</body>
 	
@@ -162,7 +163,7 @@
 	<audio id="morder_queso">
 		<source src='..\audio\morder_queso.mp3'></source>
 		<source src='..\audio\morder_queso.wav'></source>
-		<source src='..\audio\morder_queso.ogg'></source>
+		<source src='.\audio\morder_queso.ogg'></source>
 	</audio>
 	<audio id="morder_trozo">
 		<source src='..\audio\morder_trozo.mp3'></source>
@@ -184,9 +185,5 @@
 		<source src='..\audio\asco.ogg'></source>
 		<source src='..\audio\asco.wav'></source>
 	</audio>
-	<audio id="musica" autoplay="true" loop="true">
-		<source src='.\audio\musica_juego.mp3'></source>
-		<source src='.\audio\musica_juego.ogg'></source>
-		<source src='.\audio\musica_juego.wav'></source>
-	</audio>
+	
 </html>
