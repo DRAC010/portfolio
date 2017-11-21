@@ -4,17 +4,17 @@
 		<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
 		<title>RATIZIDIO</title>
 		<!-- añadimos un icono para la pestaña-->
-		<link rel="icon" type="image/png" href="./img/favicon.png">
+		<link rel="icon" type="image/png" href="../img/favicon.png">
 		<!-- incluimos las hojas de estilo-->
-		<link rel="stylesheet" href="css/canvas_movil.css" />
+		<link rel="stylesheet" href="../css/canvas_movil.css" />
 		<!-- incluimos los archivos de javascript -->
-		<script type="text/javascript" src="js/mundo.js"></script>
-		<script type="text/javascript" src="js/actor.js"></script>		
-		<script type="text/javascript" src="js/sprite.js"></script>
-		<script type="text/javascript" src="js/guardarHighscore.js"></script>
-		<script type="text/javascript" src="js/nivel1.js"></script>
-		<script type="text/javascript" src="js/nivel2.js"></script>
-		<script type="text/javascript" src="js/nivel3.js"></script>
+		<script type="text/javascript" src="../js/mundo.js"></script>
+		<script type="text/javascript" src="../js/actor.js"></script>		
+		<script type="text/javascript" src="../js/sprite.js"></script>
+		<script type="text/javascript" src="../js/guardarHighscore.js"></script>
+		<script type="text/javascript" src="../js/nivel1.js"></script>
+		<script type="text/javascript" src="../js/nivel2.js"></script>
+		<script type="text/javascript" src="../js/nivel3.js"></script>
 		
 		<script>
 			//asignamos al evento de carga la función para inicializar el juego
@@ -107,7 +107,7 @@
 				//imagen con todos los gráficos
 				var imagenSprites = new Image();
 				//ruta de la imagen
-				imagenSprites.src = "./img/spritesx64.png"; 
+				imagenSprites.src = "../img/spritesx64.png"; 
 				//inicializamos la lista
 				listaSprites = [];
 				
@@ -136,41 +136,41 @@
 	<!-- asignamos la funcion escalar al evento resize para que no pierda las proporciones-->
 	<body>
 		<div class="wrapper"><!-- contexto gráfico del mundo-->
-			<img src=".\img\left_btn.png" width='150' height='150' onclick="leftControl()"/>
+			<img src="..\img\left_btn.png" width='150' height='150' onclick="leftControl()"/>
 			<canvas width='640' height='1152'></canvas>
-			<img src=".\img\right_btn.png" width='150' height='150' onclick="rightControl()"/>
+			<img src="..\img\right_btn.png" width='150' height='150' onclick="rightControl()"/>
 		</div>
 	</body>
 	
 	<audio id="grito">
-		<source src='.\audio\grito.mp3'></source>
-		<source src='.\audio\grito.ogg'></source>
-		<source src='.\audio\grito.wav'></source>
+		<source src='..\audio\grito.mp3'></source>
+		<source src='..\audio\grito.ogg'></source>
+		<source src='..\audio\grito.wav'></source>
 	</audio>
 	<audio id="morder_queso">
-		<source src='.\audio\morder_queso.mp3'></source>
-		<source src='.\audio\morder_queso.wav'></source>
-		<source src='.\audio\morder_queso.ogg'></source>
+		<source src='..\audio\morder_queso.mp3'></source>
+		<source src='..\audio\morder_queso.wav'></source>
+		<source src='..\audio\morder_queso.ogg'></source>
 	</audio>
 	<audio id="morder_trozo">
-		<source src='.\audio\morder_trozo.mp3'></source>
-		<source src='.\audio\morder_trozo.wav'></source>
-		<source src='.\audio\morder_trozo.ogg'></source>
+		<source src='..\audio\morder_trozo.mp3'></source>
+		<source src='..\audio\morder_trozo.wav'></source>
+		<source src='..\audio\morder_trozo.ogg'></source>
 	</audio>
 	<audio id="trampa">
-		<source src='.\audio\trampa.mp3'></source>
-		<source src='.\audio\trampa.ogg'></source>
-		<source src='.\audio\trampa.wav'></source>
+		<source src='..\audio\trampa.mp3'></source>
+		<source src='..\audio\trampa.ogg'></source>
+		<source src='..\audio\trampa.wav'></source>
 	</audio>
 	<audio id="victoria">
-		<source src='.\audio\victoria.mp3'></source>
-		<source src='.\audio\victoria.ogg'></source>
-		<source src='.\audio\victoria.wav'></source>
+		<source src='..\audio\victoria.mp3'></source>
+		<source src='..\audio\victoria.ogg'></source>
+		<source src='..\audio\victoria.wav'></source>
 	</audio>
 	<audio id="asco">
-		<source src='.\audio\asco.mp3'></source>
-		<source src='.\audio\asco.ogg'></source>
-		<source src='.\audio\asco.wav'></source>
+		<source src='..\audio\asco.mp3'></source>
+		<source src='..\audio\asco.ogg'></source>
+		<source src='..\audio\asco.wav'></source>
 	</audio>
 	
 </html>
