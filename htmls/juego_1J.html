@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+		<title>RATIZIDIO</title>
+		<!-- añadimos un icono para la pestaña-->
+		<link rel="icon" type="image/png" href="../img/favicon.png">
+		<!-- incluimos las hojas de estilo-->
+		<link rel="stylesheet" href="../css/styleRatonera.css" />
+		<link rel="stylesheet" href="../css/canvas.css" />
+		<!-- incluimos los archivos de javascript -->
+		<script type="text/javascript" src="../js/mundo.js"></script>
+		<script type="text/javascript" src="../js/actor.js"></script>		
+		<script type="text/javascript" src="../js/sprite.js"></script>
+		<script type="text/javascript" src="../js/guardarHighscore.js"></script>
+		<script type="text/javascript" src="../js/nivel1.js"></script>
+		<script type="text/javascript" src="../js/nivel2.js"></script>
+		<script type="text/javascript" src="../js/nivel3.js"></script>
+		
+		<script>
+			//asignamos al evento de carga la función para inicializar el juego
+			window.onload = inicializar;
+					
+			//variables para el canvas
+			var cnv;
+			var spritesCargados=false;
+			var listaSprites;
+			
+			//mundo de juego
+			var mundo;
+			
+			//var sonidos
+			var grito;
+			var morder_queso;
+			var morder_trozo;
+			var trampa;
+			var victoria;
+			
+			//constantes
+			var TAMANIOSPRITE = 64; //pixels
+			var ALTOMAPA = 9; //casillas
+			var ANCHOMAPA = 5; //casillas
+			var DERECHA	= "derecha";
+			var IZQUIERDA = "izquierda";
+			var NOACCION = "";
+					
+			//id del intervalo de actualizacion del estado de juego
+			var actualiza1;
+			
+			//cargamos los sprites y tiles
+			cargarSprites();
+			
+			//carga los datos y hace iniciar el juego
+			function inicializar()
+			{
+				//seleccionamos los elementos html
+				cnv = document.getElementsByTagName('canvas')[0];
+				grito = document.getElementById('grito');
+				morder_queso = document.getElementById('morder_queso');
+				morder_trozo = document.getElementById('morder_trozo');
+				trampa = document.getElementById('trampa');
+				victoria = document.getElementById('victoria');
+					
+				//creamos el mundo de juego con el contexto gráfico 2D
+				mundo = new Mundo(cnv.getContext("2d"));
+				
+				//mostramos el mundo de juego por pantalla
+				actualizarEscena();
+				
+				//asignamos la función encargada de manejar las entradas de teclado
+				window.addEventListener('keydown',keyControler,false);
+				setTimeout(empezar, 1000); //empieza el juego pasado el tiempo
+			}
+			
+			//inicia el juego
+			function empezar()
+			{
+				//creamos un intervalo que actualiza el estado del juego hasta que finaliza
+				mundo.init();
+				actualiza1 = setInterval(actualizar, 80); 
+			}
+					
+			//actualiza las posiciones y comprueba colisiones
+			function actualizar()
+			{
+				mundo.muevePersonaje();	
+				mundo.resolverColisiones();
+			}		
+			
+			//mueve el personaje y muestra por pantalla el mundo 
+			function actualizarEscena()
+			{
+				//sólo muestra el mundo cuando los sprites terminan de cargarse
+				if (spritesCargados == true)
+				{	
+					mundo.validaActualizaMovimiento();							
+					mundo.render();
+				} 
+				//volvemos a llamar la función cuando termina de pintar
+				if(mundo.state>0){
+					setTimeout(guardarHighscore, 140, mundo.getPuntos()); 
+				}else{
+					requestAnimationFrame(actualizarEscena); 
+				}
+			}
+			
+			//guardamos en una lista los sprites que vamos a utilizar para los personajes y objetos 
+			function cargarSprites()
+			{
+				//imagen con todos los gráficos
+				var imagenSprites = new Image();
+				//ruta de la imagen
+				imagenSprites.src = "../img/spritesx64.png"; 
+				//inicializamos la lista
+				listaSprites = [];
+				
+				//cuando se termina de cargar la imagen cargamos los sprites en la lista
+				imagenSprites.onload = function()
+				{
+					for(var spriteID=0;spriteID<30;spriteID++){
+						listaSprites[spriteID] = new Sprite(imagenSprites, spriteID*TAMANIOSPRITE, 0, TAMANIOSPRITE, TAMANIOSPRITE);
+					}
+					spritesCargados=true;
+				};
+			}
+			
+			//actualiza la ultima pulsacion realizada por el jugador
+			//traduce las entradas del teclado como acciones
+			function keyControler(e)
+			{
+				//recibimos el codigo de la tecla pulsada y actualizamos la acción
+				switch(e.keyCode)
+				{
+					case 37: //FLECHA IZQUIERDA
+						mundo.pulsacion=IZQUIERDA;
+						break;
+					case 39: //FLECHA DERECHA
+						mundo.pulsacion=DERECHA;
+						break;
+				}
+			}
+		</script>  	
+	</head>
+	<!-- asignamos la funcion escalar al evento resize para que no pierda las proporciones-->
+	<body>
+		<div class="wrapper">
+			 <input type='button' class='boton' value='VOLVER' onClick="location.href='menuRatonera.html'" 
+				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
+			<canvas width='320' height='576'></canvas>
+			<input type='button' class='boton' value='JUGAR' onClick="location.reload(true)'" 
+				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
+	
+    
+		</div>
+	</body>
+	
+	<audio id="grito">
+		<source src='..\audio\grito.mp3'></source>
+		<source src='..\audio\grito.ogg'></source>
+		<source src='..\audio\grito.wav'></source>
+	</audio>
+	<audio id="morder_queso">
+		<source src='..\audio\morder_queso.mp3'></source>
+		<source src='..\audio\morder_queso.wav'></source>
+		<source src='..\audio\morder_queso.ogg'></source>
+	</audio>
+	<audio id="morder_trozo">
+		<source src='..\audio\morder_trozo.mp3'></source>
+		<source src='..\audio\morder_trozo.wav'></source>
+		<source src='..\audio\morder_trozo.ogg'></source>
+	</audio>
+	<audio id="trampa">
+		<source src='..\audio\trampa.mp3'></source>
+		<source src='..\audio\trampa.ogg'></source>
+		<source src='..\audio\trampa.wav'></source>
+	</audio>
+	<audio id="victoria">
+		<source src='..\audio\victoria.mp3'></source>
+		<source src='..\audio\victoria.ogg'></source>
+		<source src='..\audio\victoria.wav'></source>
+	</audio>
+	<audio id="asco">
+		<source src='..\audio\asco.mp3'></source>
+		<source src='..\audio\asco.ogg'></source>
+		<source src='..\audio\asco.wav'></source>
+	</audio>
+	
+</html>

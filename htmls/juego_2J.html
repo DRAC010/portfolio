@@ -1,0 +1,230 @@
+<!-- 
+	Fecha creación: 28/12/2016 
+	Autores: Raquel Más y Carolina Damián
+-->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+		<title>RATIZIDIO</title>
+		<!-- añadimos un icono para la pestaña-->
+		<link rel="icon" type="image/png" href="../img/favicon.png">
+		<!-- incluimos las hojas de estilo-->
+		<link rel="stylesheet" href="../css/styleRatonera.css" />
+		<link rel="stylesheet" href="../css/canvas_2p.css" />
+		<!-- incluimos los archivos de javascript -->
+		<script type="text/javascript" src="../js/mundo.js"></script>
+		<script type="text/javascript" src="../js/actor.js"></script>		
+		<script type="text/javascript" src="../js/sprite.js"></script>
+		<script type="text/javascript" src="../js/guardarHighscore.js"></script>
+		<script type="text/javascript" src="../js/nivel1.js"></script>
+		<script type="text/javascript" src="../js/nivel2.js"></script>
+		<script type="text/javascript" src="../js/nivel3.js"></script>
+		
+		<script>
+			//asignamos al evento de carga la función para inicializar el juego
+			window.onload = inicializar;
+					
+			//variables para el canvas
+			var cnv1;
+			var cnv2;
+			var spritesCargados=false;
+			var listaSprites;
+			
+			//mundo de juego
+			var mundo1;
+			var mundo2;
+			
+			//var sonidos
+			var grito;
+			var morder_queso;
+			var morder_trozo;
+			var trampa;
+			var victoria;
+			
+			//constantes
+			var TAMANIOSPRITE = 64; //pixels
+			var ALTOMAPA = 9; //casillas
+			var ANCHOMAPA = 5; //casillas
+			var DERECHA	= "derecha";
+			var IZQUIERDA = "izquierda";
+			var NOACCION = "";
+					
+			//id del intervalo de actualizacion del estado de juego
+			var actualiza1,actualiza2;
+			
+			//cargamos los sprites y tiles
+			cargarSprites();
+			
+			//carga los datos y hace iniciar el juego
+			function inicializar()
+			{
+				//seleccionamos los elementos html
+				cnv1 = document.getElementsByTagName('canvas')[0];
+				cnv2 = document.getElementsByTagName('canvas')[1];
+				grito = document.getElementById('grito');
+				morder_queso = document.getElementById('morder_queso');
+				morder_trozo = document.getElementById('morder_trozo');
+				trampa = document.getElementById('trampa');
+				victoria = document.getElementById('victoria');
+					
+				//creamos el mundo de juego con el contexto gráfico 2D
+				mundo1 = new Mundo(cnv1.getContext("2d"));
+				mundo2 = new Mundo(cnv2.getContext("2d"),true);
+				
+				//mostramos el mundo de juego por pantalla
+				actualizarEscena();
+				
+				//asignamos la función encargada de manejar las entradas de teclado
+				window.addEventListener('keydown',keyControler,false);
+				setTimeout(empezar, 1000); //empieza el juego pasado el tiempo
+			
+			}
+			
+			//inicia el juego
+			function empezar()
+			{
+				//creamos un intervalo que actualiza el estado del juego hasta que finaliza
+				mundo1.init();
+				mundo2.init();
+				actualiza1 = setInterval(actualizar1, 80); 
+				actualiza2 = setInterval(actualizar2, 80); 
+			}
+					
+			//actualiza las posiciones y comprueba colisiones
+			function actualizar1()
+			{
+				mundo1.muevePersonaje();
+				mundo1.resolverColisiones();
+			}
+			
+			function actualizar2()
+			{
+				mundo2.muevePersonaje();	
+				mundo2.resolverColisiones();
+			}		
+			
+			//mueve el personaje y muestra por pantalla el mundo 
+			function actualizarEscena()
+			{
+				//sólo muestra el mundo cuando los sprites terminan de cargarse
+				if (spritesCargados == true)
+				{	
+					mundo1.validaActualizaMovimiento();							
+					mundo2.validaActualizaMovimiento();							
+					mundo1.render();
+					mundo2.render();
+				} 
+				//volvemos a llamar la función cuando termina de pintar
+				if(mundo1.state>0 && mundo2.state>0){
+					setTimeout(compruebaGanador,140)
+				}else{
+					requestAnimationFrame(actualizarEscena); 
+				}
+			}
+			
+			function compruebaGanador(){
+				var puntosGris = mundo1.getPuntos();
+				var puntosMarron = mundo2.getPuntos();
+			
+				guardarHighscore(puntosGris);
+				guardarHighscore(puntosMarron);
+				if(puntosGris>puntosMarron){
+					alert("GANA EL RATON GRIS!");
+				}else if(puntosGris<puntosMarron){
+					alert("GANA EL RATON MARRON!");
+				}else{
+					alert("EMPATE");
+				}
+			}
+			
+			//guardamos en una lista los sprites que vamos a utilizar para los personajes y objetos 
+			function cargarSprites()
+			{
+				//imagen con todos los gráficos
+				var imagenSprites = new Image();
+				//ruta de la imagen
+				imagenSprites.src = "../img/spritesx64.png"; 
+				//inicializamos la lista
+				listaSprites = [];
+				
+				//cuando se termina de cargar la imagen cargamos los sprites en la lista
+				imagenSprites.onload = function()
+				{
+					for(var spriteID=0;spriteID<30;spriteID++){
+						listaSprites[spriteID] = new Sprite(imagenSprites, spriteID*TAMANIOSPRITE, 0, TAMANIOSPRITE, TAMANIOSPRITE);
+					}
+					spritesCargados=true;
+				};
+			}
+			
+			//actualiza la ultima pulsacion realizada por el jugador
+			//traduce las entradas del teclado como acciones
+			function keyControler(e)
+			{
+				//recibimos el codigo de la tecla pulsada y actualizamos la acción
+				switch(e.keyCode)
+				{
+					case 65: //A
+						mundo1.pulsacion=IZQUIERDA;
+						break;
+					case 68: //D
+						mundo1.pulsacion=DERECHA;
+						break;
+					case 37: //FLECHA IZQUIERDA
+						mundo2.pulsacion=IZQUIERDA;
+						break;
+					case 39: //FLECHA DERECHA
+						mundo2.pulsacion=DERECHA;
+						break;
+				}
+			}
+		</script>  	
+	</head>
+	<!-- asignamos la funcion escalar al evento resize para que no pierda las proporciones-->
+	<body>
+		<div class="wrapper">
+			<input type='button' class='boton' value='VOLVER' onClick="location.href='menuRatonera.html'" 
+			style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
+
+			<canvas width='320' height='576'></canvas>
+			<canvas width='320' height='576'></canvas>			  
+		
+			<input type='button' class='boton' value='JUGAR' onClick="location.reload(true)'" 
+			style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
+		</div>
+	</body>
+	
+	<audio id="grito">
+		<source src='..\audio\grito.mp3'></source>
+		<source src='..\audio\grito.ogg'></source>
+		<source src='..\audio\grito.wav'></source>
+	</audio>
+	<audio id="morder_queso">
+		<source src='..\audio\morder_queso.mp3'></source>
+		<source src='..\audio\morder_queso.wav'></source>
+		<source src='..\audio\morder_queso.ogg'></source>
+	</audio>
+	<audio id="morder_trozo">
+		<source src='..\audio\morder_trozo.mp3'></source>
+		<source src='..\audio\morder_trozo.wav'></source>
+		<source src='..\audio\morder_trozo.ogg'></source>
+	</audio>
+	<audio id="trampa">
+		<source src='..\audio\trampa.mp3'></source>
+		<source src='..\audio\trampa.ogg'></source>
+		<source src='..\audio\trampa.wav'></source>
+	</audio>
+	<audio id="victoria">
+		<source src='..\audio\victoria.mp3'></source>
+		<source src='..\audio\victoria.ogg'></source>
+		<source src='..\audio\victoria.wav'></source>
+	</audio>
+	<audio id="asco">
+		<source src='..\audio\asco.mp3'></source>
+		<source src='..\audio\asco.ogg'></source>
+		<source src='..\audio\asco.wav'></source>
+	</audio>
+	
+</html>
