@@ -67,7 +67,8 @@
 		}	
 		
 		.descripcion-imagen{
-			margin-top:10%;
+			margin-top:10px;
+			margin-bottom:10px;
 			margin-left:5%;	
 			background-color: rgba(50, 70, 90, 0.6);			
 			border-radius: 45px 0px 45px 0px;
@@ -106,14 +107,14 @@
 			overflow: hidden;
 			background: #2f4357;
 			border-radius: 25px 25px 25px 25px;
-			margin-top: 25px;
+			margin-top: 25px;				
+			margin-left:45px;
 			max-height: 700px;
-			max-width: 700px;
+			min-height: 150px; 
 		}
 		
 		.carousel-control.left{
-			background: -webkit-linear-gradient(right, rgba(0, 0, 0, .001) 0%, rgba(0, 0, 0, .6) 100%);
-			
+			background: -webkit-linear-gradient(right, rgba(0, 0, 0, .001) 0%, rgba(0, 0, 0, .6) 100%);			
 			border-radius: 25px 0px 0px 25px;
 			
 		}
@@ -125,13 +126,15 @@
 		
 		.carousel .item{						
 			overflow: hidden;		
-			min-height: 100px;  /*Evita que el carrusel se distorsione si por alguna razón la imagen no se carga*/
+			min-height: 150px;  /*Evita que el carrusel se distorsione si por alguna razón la imagen no se carga*/
 			margin: 0 auto;
 		}
 		
 		.carousel .item img{
 			/*height: 100%;
 			width: 100%;*/
+			min-height: 150px;
+			min-width: 150px;
 			border-radius: 25px 25px 25px 25px;
 			margin: 0 auto; /* Alinea la imagen horizontalmente al centro */
 		}
@@ -149,22 +152,29 @@
 		}
 		
 		
+		
 		.container-ratonera{
 			text-align: center;
 			margin-top:20px;
+			margin-left:30px;
 			color: #FFFFFF;
 			font-family: "Georgia";
 		}
+		
+		
 		.imagenes{
-			margin-top: 15px;
-			
+			margin-top: 15px;	
+			margin-left: 15%;
+			width:  40%; 
+			height: 90%; 
 			max-height: 400px;
-			min-height: 100px;
+			max-width: 300px;
+			min-width:  120px;
 		}
 		
 		
-		.contenido-fila{
-			margin-top: 5%;
+		.contenido-fila{ 
+			left: 20%;
 		}
 			
 		
@@ -189,8 +199,9 @@
 		}
 		
 		.botonPlay{			
-			margin-left: 35%;
-
+		margin-left:5%;	
+		margin-bottom: 30px;
+					
 		}	
 		
 		
