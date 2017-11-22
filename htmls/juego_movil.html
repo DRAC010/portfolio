@@ -96,6 +96,7 @@
 				} 
 				//volvemos a llamar la función cuando termina de pintar
 				if(mundo.state>0){
+					mundo.parar();
 					setTimeout(guardarHighscore, 140, mundo.getPuntos()); 
 				}else{
 					requestAnimationFrame(actualizarEscena); 

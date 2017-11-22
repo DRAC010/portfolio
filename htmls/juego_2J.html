@@ -113,6 +113,13 @@
 					mundo2.render();
 				} 
 				//volvemos a llamar la función cuando termina de pintar
+				if(mundo1.state>0){
+					mundo1.parar();
+				}
+				if(mundo2.state>0){
+					mundo2.parar();
+				}
+				
 				if(mundo1.state>0 && mundo2.state>0){
 					setTimeout(compruebaGanador,140)
 				}else{
