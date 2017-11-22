@@ -23,16 +23,15 @@
     		       'BlackBerry|Windows Phone|'  +
     		       'Opera Mini|IEMobile|Mobile' , 
     		      'i');
+				  
+	var cargarhtml = "";			  
   
   if (testExp.test(navigator.userAgent)){
-  
-  
-       document.getElementById("device").innerHTML =
-       		"Your device is a Mobile Device";
+		/*Si es móvil*/  
+       cargarHtml="../htmls/menuRatoneraMovil.html";
 			}
   else{
-       document.getElementById("device").innerHTML = 
-       		"Your device is NOT a Mobile Device";
+        cargarHtml="../htmls/menuRatonera.html";
      }			 
 </script>
 	
@@ -93,7 +92,7 @@
 	</div>
 	
 	<div class="contenido-fila center-block col-md-8 col-xs-8" >	
-		<a href="../htmls/menuRatonera.html" target="_blank"> 
+		<a href="cargarHtml" target="_blank"> 
 			<div class="botonPlay center-block">
 					  <img class="img-responsive center-block" src="../src/botonPlay.png" height ="150" width="350"> </img>
 			</div>
