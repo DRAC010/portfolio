@@ -5,12 +5,20 @@ body{
 .wrapper{
 	margin:auto;
 	margin-top:60px;
-	height: 576px;
-	width: 800px;
+	height: 800px;
+	width: 80%;
+	min-width: 500px;
+   position:relative; 
 }
 
 #menu{
 	background-image: url("../img/imagenMenu.png");
+	max-height: 800px;
+	max-width: 1120px;
+	-webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
 }
 
 .boton{
@@ -37,13 +45,14 @@ body{
 #botones_menu .boton{
 	float:right;
 	clear:right;
+	margin-right:20px;
 }
 
 #botones_idiomas{
-	margin-top:120px;
+	margin-top:50px;
 	float:right;
 	clear:right;	
-	margin-right:20px;
+	margin-right:40px;
 }
 
 .idiomas{
@@ -61,4 +70,3 @@ table{
 	font-family: "Comic Sans MS";
 	margin:auto;
 }
-
