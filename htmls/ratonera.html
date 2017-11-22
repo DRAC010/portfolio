@@ -30,13 +30,13 @@
 		
 		if (testExp.test(navigator.userAgent)){
 			/*Si es móvil*/  
-			document.getElementById("device").innerHTML =
-			"Estás en un móvil";
+			/*document.getElementById("device").innerHTML =
+			"Estás en un móvil";*/
 			cargar="../htmls/menuRatoneraMovil.html";
 			document.getElementById('botonPlay').href = cargar;		   
 		} else{
-			document.getElementById("device").innerHTML =
-			"Estás en un navegador de escritorio";
+			/*document.getElementById("device").innerHTML =
+			"Estás en un navegador de escritorio";*/
 			cargar="../htmls/menuRatonera.html";
 			document.getElementById('botonPlay').href = cargar;	
 		}
@@ -49,10 +49,7 @@
 	
 	 </head>
   <body onload="init()">
-  
-  <div id="device" style="text-align: center; border:1px dotted black; color:green;"></div>
-	
-	  <div class="container ">
+  	<div class="container ">
 			<div class="container-ratonera">
 			<h1>La Ratonera</h1>
 			
