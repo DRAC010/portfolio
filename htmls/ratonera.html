@@ -20,7 +20,7 @@
   <body>
   
   <div id="device" style="text-align: center; border:1px dotted black; color:green;"></div>
-		<script type="text/javascript">
+	<script type="text/javascript">
 	  testExp = new RegExp('Android|webOS|iPhone|iPad|' +
 					   'BlackBerry|Windows Phone|'  +
 					   'Opera Mini|IEMobile|Mobile' , 
@@ -32,12 +32,14 @@
 			/*Si es móvil*/  
 			document.getElementById("device").innerHTML =
        		"Estás en un móvil";
-		   cargar="../htmls/menuRatoneraMovil.html";
+			cargar="../htmls/menuRatoneraMovil.html";
+			document.getElementById('botonPlay').href = cargar;		   
 				}
 	  else{
 	  document.getElementById("device").innerHTML =
        		"Estás en un navegador de escritorio";
 			cargar="../htmls/menuRatonera.html";
+			document.getElementById('botonPlay').href = cargar;	
 		 }			 
 	</script>
 	
@@ -103,7 +105,7 @@
 		<script>
 			/*$(this).attr('href', cargar); */
 		</script>
-		<a href=cargar target="_blank"> 
+		<a id="botonPlay" href="" target="_blank"> 
 			<div class="botonPlay center-block">
 					  <img class="img-responsive center-block" src="../src/botonPlay.png" height ="150" width="350"> </img>
 			</div>
