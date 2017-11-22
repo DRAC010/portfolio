@@ -148,14 +148,14 @@
 		}
 				
 		.thumbnail {
-			border-radius: 20px 20px 20px 20px;
+			border-radius: 18px 18px 20px 20px;
 			box-shadow: 10px 10px black;
 			margin: 0 auto;
 			margin-top: 50px;
 			margin-left: 12%;
 			margin-bottom: 5%;
 			max-width: 400px;
-			min-width: 170px;
+			min-width: 140px;
 		}
 		
 		.thumbnail:hover {
