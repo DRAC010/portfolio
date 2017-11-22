@@ -6,28 +6,19 @@
 <title>RATIZIDIO</title>
 <!-- añadimos un icono para la pestaña-->
 <link rel="icon" type="image/png" href="../img/favicon.png">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	
-<link type="text/css" rel="stylesheet" href="../css/styleRatonera.css"/>
+<link type="text/css" rel="stylesheet" href="../css/styleRatoneraMovil.css"/>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src = "../js/traductor.js"></script>
 </head>
 <body>
 
-	<div id="menu" class="wrapper">		
-	
-			<div id="botones_idiomas">
-				<input id="id_esp" class="idiomas" type="image" src="../img/sp_flag.png"/>
-
-				<input id="id_eng" class="idiomas" type="image" src="../img/uk_flag.png"/>
-			</div>
-		
-			<div id="botones_menu" >
-				<input type='button' class='boton' key = '1 jugador' value='1 JUGADOR' onClick="location.href='juego_1J.html'" 
-				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
+	<div id="menu" class="wrapper">
+		 <div id="botones_idiomas">
+			<input id="id_esp" class="idiomas" type="image" src="../img/sp_flag.png"/>
+			<input id="id_eng" class="idiomas" type="image" src="../img/uk_flag.png"/>
 			
-				<input type='button' class='boton' key = '2 jugadores' value='2 JUGADORES' onClick="location.href='juego_2J.html'" 
+			<div id="botones_menu">
+				<input type='button' class='boton' key = '1 jugador' value='1 JUGADOR' onClick="location.href='juego_1J.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
 			
 				<input type='button' class='boton' key = 'puntuaciones' value='PUNTUACIONES' onClick="location.href='puntuaciones.html'" 
@@ -35,8 +26,15 @@
 			
 				<input type='button' class='boton' key = 'creditos' value='CREDITOS' onClick="location.href='creditos.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
-			</div>		
+			</div>
+			
+		</div>
+		
+			
+	
 	</div>
+	
+   
 	
 	<audio id = "musica" autoplay = "true" loop = "true">
 		<source src = "../audio/musica_menu.mp3"></source>
