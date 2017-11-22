@@ -15,34 +15,41 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
-	
-	 </head>
-  <body>
-  
-  <div id="device" style="text-align: center; border:1px dotted black; color:green;"></div>
 	<script type="text/javascript">
-	  testExp = new RegExp('Android|webOS|iPhone|iPad|' +
-					   'BlackBerry|Windows Phone|'  +
-					   'Opera Mini|IEMobile|Mobile' , 
-					  'i');
-					  
+	function cargarHTML(){
+		location.href = cargar;
+	}
+	function init(){
+		  testExp = new RegExp('Android|webOS|iPhone|iPad|' +
+						   'BlackBerry|Windows Phone|'  +
+						   'Opera Mini|IEMobile|Mobile' , 
+						  'i');
+
 		var cargar;			  
-	  
-	  if (testExp.test(navigator.userAgent)){
+
+		if (testExp.test(navigator.userAgent)){
 			/*Si es móvil*/  
 			document.getElementById("device").innerHTML =
-       		"Estás en un móvil";
+			"Estás en un móvil";
 			cargar="../htmls/menuRatoneraMovil.html";
 			document.getElementById('botonPlay').href = cargar;		   
-				}
-	  else{
-	  document.getElementById("device").innerHTML =
-       		"Estás en un navegador de escritorio";
+		} else{
+			document.getElementById("device").innerHTML =
+			"Estás en un navegador de escritorio";
 			cargar="../htmls/menuRatonera.html";
 			document.getElementById('botonPlay').href = cargar;	
-		 }			 
+		}
+
+		var botonPlay = document.getElementById('botonPlay');
+		botonPlay.addEventListener("click",cargarHTML,false);
+	}
 	</script>
 	
+	
+	 </head>
+  <body onload="init()">
+  
+  <div id="device" style="text-align: center; border:1px dotted black; color:green;"></div>
 	
 	  <div class="container ">
 			<div class="container-ratonera">
@@ -101,15 +108,9 @@
 	</div>
 	
 	<div class="contenido-fila center-block col-md-8 col-xs-8" >	
-		
-		<script>
-			/*$(this).attr('href', cargar); */
-		</script>
-		<a id="botonPlay" href="" target="_blank"> 
-			<div class="botonPlay center-block">
-					  <img class="img-responsive center-block" src="../src/botonPlay.png" height ="150" width="350"> </img>
-			</div>
-		</a>
+		<div id="botonPlay" class="botonPlay center-block">
+			<img class="img-responsive center-block" src="../src/botonPlay.png" height ="150" width="350"> </img>
+		</div>
 	</div>
 
 	
