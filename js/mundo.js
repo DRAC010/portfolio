@@ -1,8 +1,3 @@
-/*
-	Fecha creación: 
-	Autores: 
-*/
-
 //constructor del mundo de juego
 function Mundo(ctxt,player2, movil)
 {	
