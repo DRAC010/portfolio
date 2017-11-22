@@ -5,6 +5,17 @@
 		
 		
 		
+		
+		.container-ratonera{
+			text-align: center;
+			margin-top:30px;
+			color: #FFFFFF;
+			font-family: "Georgia";
+		}
+		
+		
+		
+		
 		.navbar{
 			color: #FFFFFF;
 		}
@@ -53,8 +64,7 @@
 			text-align: center;
 			margin-left:5%;	
 						
-		}
-		
+		}		
 		
 		.imagen-perfil{
 			 margin-left:10%;				
@@ -72,17 +82,6 @@
 			margin-bottom: 70px;
 		}	
 		
-		.descripcion-imagen{
-			margin-top:10px;
-			margin-bottom:10px;
-			margin-left:5%;	
-			background-color: rgba(50, 70, 90, 0.6);			
-			border-radius: 45px 0px 45px 0px;
-			padding: 10px;
-			color: #FFFFFF;
-			text-align: center;
-			font-family: "Georgia";
-		}	
 		
 		.titulo-contact{
 			margin-top:70px;
@@ -108,7 +107,9 @@
 			 transform:scale(1.25);
 		}
 		
-			
+		.fila-carousel{
+			margin-top: 20px;
+		}
 				
 		.carousel{
 			overflow: hidden;
@@ -161,17 +162,7 @@
 			 transform:scale(1.10);
 		}
 		
-		
-		
-		.container-ratonera{
-			text-align: center;
-			margin-top:20px;
-			margin-left:30px;
-			color: #FFFFFF;
-			font-family: "Georgia";
-		}
-		
-		
+				
 		.imagenes{
 			margin-top: 15px;	
 			margin-left: 15%;
@@ -184,7 +175,7 @@
 		
 		
 		.contenido-fila{ 
-			left: 20%;
+			left: 15%;
 		}
 			
 		
@@ -208,9 +199,25 @@
 			color:#c0c0c0;
 		}
 		
+		
+		
+		
+		.descripcion-imagen{
+			margin-top: 30px;
+			margin-bottom:15px;
+			background-color: rgba(50, 70, 90, 0.6);			
+			border-radius: 45px 0px 45px 0px;
+			text-align: center;
+			padding: 20px;
+			color: #FFFFFF;
+			font-family: "Georgia";
+		}	
+		
+		
+		
 		.botonPlay{			
-		margin-left:5%;	
 		margin-bottom: 30px;
+		min-width: 120px;
 					
 		}	
 		
