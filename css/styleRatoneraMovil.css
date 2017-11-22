@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
 body{
 	background: LightSkyBlue;
 	font-family: "Gloria Hallelujah";
@@ -24,7 +26,6 @@ body{
 
 .boton{
 	font-size: 1.4em;
-	font-family: "Comic Sans MS";
 	font-weight: bolder;
 	border:none; 
 	width:200px; 
@@ -62,11 +63,9 @@ body{
 h1{
 	text-align: center;
 	padding-top:20px;	
-	font-family: "Comic Sans MS";
 }
 
 table{
 	font-size: 1.4em;
-	font-family: "Comic Sans MS";
 	margin:auto;
 }
