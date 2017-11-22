@@ -97,7 +97,6 @@ function Mundo(ctxt,player2, movil)
 				mapa[casilla]=4;
 			}
 			this.state = 1;
-			this.parar();
 		}else if (mapa[casilla]==10 || mapa[casilla]==11 || mapa[casilla]==12){
 			if(player2){
 				mouse.cambiarSprite(22);
@@ -106,7 +105,6 @@ function Mundo(ctxt,player2, movil)
 			}
 			grito.play();
 			this.state = 1;
-			this.parar();
 		}else if (mapa[casilla]==1){
 			puntos += 10;
 			morder_trozo.play();
@@ -120,6 +118,8 @@ function Mundo(ctxt,player2, movil)
 				puntos -= 10;
 			asco.play();
 			mapa[casilla]=0;
+		}else if(desplazamiento>=(mapa.length/5) && nivel==3){
+			this.state = 2;
 		}
 	}
 	
@@ -130,16 +130,14 @@ function Mundo(ctxt,player2, movil)
 				desplazamiento=0;	
 				aux_titulo=100;	
 				victoria.play();
+				nivel++;
 			}else if(nivel==2){
 				mapa = nivel3.slice();
 				desplazamiento=0;	
 				aux_titulo=100;	
 				victoria.play();
-			}else{
-				this.state=2;
-				this.parar();
+				nivel++;
 			}
-			nivel++;
 		}
 	}
 	
@@ -315,15 +313,13 @@ function Mundo(ctxt,player2, movil)
 			desplazamiento += 0.1;
 		}
 		mouse.render(contexto,escala);
-		cambiarNivel();
-		pintarTituloNivel();
 		pintarPuntos();
 		if(this.state==2)
 			pintarVictoria();
 		if(this.state==1)
 			pintarGameOver();
-		
-	
+		cambiarNivel();
+		pintarTituloNivel();
 	}
 	
 }
