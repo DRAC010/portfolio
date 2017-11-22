@@ -2,7 +2,7 @@ function guardarHighscore(newscore){
 	var highscores_stored = localStorage.getItem("highscores");
     var name = "";
 	if(highscores_stored==null){
-		name = prompt("NEW HIGHSCORE! \n "+newscore+" POINTS \nEnter your name: ");
+		name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: ");
 		localStorage.setItem("highscores", '{"scores":['+newscore+'],"names":["'+name+'"]}');
 	}else{    
 		highscores_stored = JSON.parse(highscores_stored);
@@ -11,7 +11,7 @@ function guardarHighscore(newscore){
 		var changed = false;
 		for(var i=0;i<scores_array.length && !changed;i++){
 			if(scores_array[i]<newscore){
-				name = prompt("NEW HIGHSCORE! \n "+newscore+" POINTS \nEnter your name: ");	
+				name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: ");
 				var aux = [];
 				var auxNames = [];
 				if(i==0){ 
@@ -33,7 +33,7 @@ function guardarHighscore(newscore){
 			}
 		}
 		if(!changed && scores_array.length<10){
-			name = prompt("NEW HIGHSCORE! \n "+newscore+" POINTS \nEnter your name: ");	
+			name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: ");	
 			scores_array[scores_array.length] = newscore;
 			names_array[names_array.length] = name;
 		}
