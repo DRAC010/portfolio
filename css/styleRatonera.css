@@ -4,6 +4,7 @@
 
 body{
 	background: LightSkyBlue;
+	font-family: "Gloria Hallelujah";
 }
 
 .wrapper{
@@ -25,7 +26,6 @@ body{
 
 .boton{
 	font-size: 1.4em;
-	font-family: "Gloria Hallelujah";
 	font-weight: bolder;
 	border:none; 
 	width:200px; 
@@ -64,12 +64,10 @@ body{
 h1{
 	text-align: center;
 	padding-top:20px;	
-	font-family: "Gloria Hallelujah";
 }
 
 table{
 	font-size: 1.4em;
-	font-family: "Gloria Hallelujah";
 	margin:auto;
 }
 
