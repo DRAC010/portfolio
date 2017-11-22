@@ -16,6 +16,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<script type="text/javascript">
+	var cargar;			  
+
 	function cargarHTML(){
 		location.href = cargar;
 	}
@@ -25,8 +27,7 @@
 						   'Opera Mini|IEMobile|Mobile' , 
 						  'i');
 
-		var cargar;			  
-
+		
 		if (testExp.test(navigator.userAgent)){
 			/*Si es móvil*/  
 			document.getElementById("device").innerHTML =
