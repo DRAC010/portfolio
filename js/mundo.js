@@ -12,13 +12,14 @@ function Mundo(ctxt,player2, movil)
 	var mapa = nivel1.slice();
 	var desplazamiento = 0;
 	var aux_personaje = true;
-	var aux_titulo = 100;
+	var aux_titulo = 200;
 	var started = false;
 	var escala = (movil) ? 2 : 1;
 	this.state = 0; //perder 1, ganar 2
-	
+	var instrucciones = true;
 	this.init = function(){
 		started = true;	
+		instrucciones = false;
 	}
 	
 	this.getPuntos = function(){
@@ -170,8 +171,8 @@ function Mundo(ctxt,player2, movil)
 			contexto.fillStyle = "white";
 			contexto.lineWidth = 5*escala;
 			contexto.strokeStyle = 'black';
-			contexto.strokeText("LEVEL "+nivel,60*escala,280*escala);	
-			contexto.fillText("LEVEL "+nivel,60*escala,280*escala);	
+			contexto.strokeText("LEVEL "+nivel,60*escala,310*escala);	
+			contexto.fillText("LEVEL "+nivel,60*escala,310*escala);	
 			aux_titulo--;
 		}		
 	}
@@ -309,9 +310,33 @@ function Mundo(ctxt,player2, movil)
 					listaSprites[12].dibuja(contexto, (ANCHOMAPA-i-1)*TAMANIOSPRITE, (ALTOMAPA-j-1+desplazamiento)*TAMANIOSPRITE,escala);
 				}
 		}
-		if(started){
+		if(started)
 			desplazamiento += 0.1;
+		
+		if(instrucciones){
+			var tam= 25*escala;
+			contexto.lineWidth = 2*escala;
+			contexto.strokeStyle = 'black';
+			
+			contexto.fillStyle = "orange";
+			contexto.fillRect(5*escala,105*escala,310*escala,105*escala); 
+			contexto.strokeRect(5*escala,105*escala,310*escala,105*escala); 
+			contexto.font = "bold "+tam+"px arial";
+			contexto.fillStyle = "white";
+			contexto.lineWidth = 1*escala;
+			if(player2){
+				contexto.fillText("Utiliza A y D",30*escala,140*escala);
+				contexto.strokeText("Utiliza A y D",30*escala,140*escala);
+			}else{
+				contexto.fillText("Utiliza las flechas",30*escala,140*escala);
+				contexto.strokeText("Utiliza las flechas",30*escala,140*escala);
+			}
+			contexto.fillText("para moverte a",30*escala,165*escala);
+			contexto.fillText("izquierda y derecha",30*escala,192*escala);
+			contexto.strokeText("para moverte a",30*escala,165*escala);
+			contexto.strokeText("izquierda y derecha",30*escala,192*escala);	
 		}
+		
 		mouse.render(contexto,escala);
 		pintarPuntos();
 		if(this.state==2)
