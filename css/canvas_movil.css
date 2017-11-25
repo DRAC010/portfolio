@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
 *{
 	background: LightSkyBlue;
 }
@@ -8,6 +10,7 @@
 }
 
 .boton{
+	font-style: "Gloria Hallelujah";
 	font-size: 1.4em;
 	font-family: "Comic Sans MS";
 	font-weight: bolder;
@@ -19,6 +22,7 @@
 	float: left;
 	clear: left;
 	margin-right: -150px;
+	margin-top: 50px;
 }
 
 .boton:hover{
