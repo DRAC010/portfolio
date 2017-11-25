@@ -57,8 +57,8 @@
 			function inicializar()
 			{
 				//seleccionamos los elementos html
-				cnv1 = document.getElementsByTagName('canvas')[0];
-				cnv2 = document.getElementsByTagName('canvas')[1];
+				cnv1 = document.getElementsByTagName('canvas')[1];
+				cnv2 = document.getElementsByTagName('canvas')[0];
 				grito = document.getElementById('grito');
 				morder_queso = document.getElementById('morder_queso');
 				morder_trozo = document.getElementById('morder_trozo');
@@ -74,7 +74,7 @@
 				
 				//asignamos la función encargada de manejar las entradas de teclado
 				window.addEventListener('keydown',keyControler,false);
-				setTimeout(empezar, 1000); //empieza el juego pasado el tiempo
+				setTimeout(empezar, 2500); //empieza el juego pasado el tiempo
 			
 			}
 			
@@ -170,16 +170,16 @@
 				switch(e.keyCode)
 				{
 					case 65: //A
-						mundo1.pulsacion=IZQUIERDA;
-						break;
-					case 68: //D
-						mundo1.pulsacion=DERECHA;
-						break;
-					case 37: //FLECHA IZQUIERDA
 						mundo2.pulsacion=IZQUIERDA;
 						break;
-					case 39: //FLECHA DERECHA
+					case 68: //D
 						mundo2.pulsacion=DERECHA;
+						break;
+					case 37: //FLECHA IZQUIERDA
+						mundo1.pulsacion=IZQUIERDA;
+						break;
+					case 39: //FLECHA DERECHA
+						mundo1.pulsacion=DERECHA;
 						break;
 				}
 			}
@@ -189,13 +189,13 @@
 	<body>
 		<div class="wrapper">
 			<input type='button' class='boton' value='VOLVER' onClick="location.href='menuRatonera.html'" 
-			style="background: url('../img/flecha.png') left center no-repeat; background-size:cover; font-family: 'Gloria Hallelujah';"/>
+			style="background: url('../img/flecha.png') left center no-repeat; background-size:cover;"/>
 
 			<canvas width='320' height='576'></canvas>
 			<canvas width='320' height='576'></canvas>			  
 		
 			<input type='button' class='boton' value='REINICIAR' onClick="location.reload(true)" 
-			style="background: url('../img/boton.png') left center no-repeat; background-size:cover; font-family: 'Gloria Hallelujah';"/>
+			style="background: url('../img/boton.png') left center no-repeat; background-size:cover;"/>
 		</div>
 	</body>
 	
