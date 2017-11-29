@@ -1,8 +1,3 @@
-/*
-	Fecha creación: 28/12/2016 
-	Autores: Raquel Más y Carolina Damián
-*/
-
 //constructor de Sprite
 function Sprite (imagenFuente, x, y, ancho, alto){
 	
