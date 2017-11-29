@@ -1,11 +1,12 @@
 //constructor del mundo de juego
-function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugador 2, si se ejecuta desde un movil
+function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugador 2, si se ejecuta desde un móvil
 {	
 	//contexto gráfico donde se va a mostrar el mundo
 	var contexto=ctxt;
 	//actual entrada de teclado introducida por el jugador
 	this.pulsacion = NOACCION;
 	var puntos = 0;
+	//personaje principal controlado por el jugador
 	var mouse = (player2) ? new Actor(2,2):new Actor(2,0); //sprite ratón marrón o gris dependiendo del jugador
 	var nivel=1; //nivel actual
 	var mapa = nivel1.slice(); //array que representa con números el mapa del nivel actual
@@ -353,7 +354,7 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 		if(this.state==1) //en caso de derrota mostramos el texto
 			pintarGameOver();
 		cambiarNivel(); //comprobamos si hay que cambiar de nivel
-		pintarTituloNivel(); //al inicio de cada nivel pintamos el titulo
+		pintarTituloNivel(); //al inicio de cada nivel pintamos el título
 	}
 	
 }
