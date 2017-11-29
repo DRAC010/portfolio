@@ -1,4 +1,4 @@
-var nivel3 = [   //0 = hueco vacío, 1 = quesito, 2 = trampa, 3 = queso grande, 9 = queso podrido
+var nivel3 = [   //0 = hueco vacío, 1 = quesito, 2 = trampa, 3 = queso grande, 9 = queso podrido, 8 = final de nivel
 0,0,0,0,0,
 0,0,0,0,0,
 0,0,0,0,0,
@@ -166,5 +166,6 @@ var nivel3 = [   //0 = hueco vacío, 1 = quesito, 2 = trampa, 3 = queso grande, 
 0,0,0,0,0,
 0,0,0,0,0,
 0,0,0,0,0,
-0,0,0,0,0
+0,0,0,0,0,
+8,8,8,8,8
 ];
