@@ -18,32 +18,9 @@
 			}
 		}
 	}
-
-	var cargar;			  
-
-	function cargarHTML(){
-		location.href = cargar;
-	}
-	function init(){
-		  testExp = new RegExp('Android|webOS|iPhone|iPad|' +
-						   'BlackBerry|Windows Phone|'  +
-						   'Opera Mini|IEMobile|Mobile' , 
-						  'i');
-
-		if (testExp.test(navigator.userAgent)){
-			cargar="menuRatoneraMovil.html";
-		} else{
-			cargar="menuRatonera.html";
-		}
-		
-		var botonVolver = document.getElementById('volver');
-		botonVolver.addEventListener("click",cargarHTML,false);
-		
-		cargarPuntuaciones();
-	}
 </script>
 </head>
-<body onload="init()">
+<body onload="cargarPuntuaciones()">
 
   <div class="wrapper">
     <h1>PUNTUACIONES</h1>
@@ -57,7 +34,7 @@
 	</tbody>
 	</table>
   
-	<input type='button' class='boton'  value='VOLVER' id="volver"
+	<input type='button' class='boton'  value='VOLVER' id="volver" onClick="location.href='menuRatonera.html'"
 	style="background: url('../img/flecha.png') left center no-repeat; background-size:cover;"/>
     
   </div>
