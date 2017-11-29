@@ -5,14 +5,17 @@
 	<title>Ratizide</title>
 	<!-- añadimos un icono para la pestaña-->
 	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<!-- añadimos el css-->
 	<link type="text/css" rel="stylesheet" href="../css/styleRatonera.css"/>
 	<meta name="author" content="Raquel Mas García">
 <script>
+	//se encarga de recuperar las puntuaciones guardadas en el localStorage
 	function cargarPuntuaciones(){
 		var hc = localStorage.getItem("highscores");
 		var tbody = document.getElementsByTagName("tbody")[0];
 		if(hc!=null){
 			hc = JSON.parse(hc);
+			//recorremos el los arrays del JSON e insertamos los datos en la tabla
 			for(var i=0; i<hc.scores.length; i++){
 				tbody.innerHTML += "<td>"+(i+1)+".</td><td>"+hc.names[i]+"</td><td>"+hc.scores[i]+"</td>"
 			}
@@ -21,7 +24,7 @@
 </script>
 </head>
 <body onload="cargarPuntuaciones()">
-
+<!-- envoltorio para centrar el contenido-->
   <div class="wrapper">
     <h1>PUNTUACIONES</h1>
     <table>
