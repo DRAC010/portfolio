@@ -6,10 +6,10 @@
 		<title>Ratizide</title>
 		<!-- añadimos un icono para la pestaña-->
 		<link rel="icon" type="image/png" href="../img/favicon.png">
-		<!-- incluimos las hojas de estilo-->
+		<!-- añadimos los CSS-->
 		<link rel="stylesheet" href="../css/styleRatonera.css" />
 		<link rel="stylesheet" href="../css/canvas.css" />
-		<!-- incluimos los archivos de javascript -->
+		<!-- incluimos los archivos de javascript del juego y la función para guardar las puntuaciones-->
 		<script type="text/javascript" src="../js/mundo.js"></script>
 		<script type="text/javascript" src="../js/actor.js"></script>		
 		<script type="text/javascript" src="../js/sprite.js"></script>
@@ -22,15 +22,14 @@
 			//asignamos al evento de carga la función para inicializar el juego
 			window.onload = inicializar;
 					
-			//variables para el canvas
-			var cnv;
+			var cnv; //canvas
 			var spritesCargados=false;
-			var listaSprites;
+			var listaSprites; //contiene todos los sprites del juego
 			
 			//mundo de juego
 			var mundo;
 			
-			//var sonidos
+			//sonidos del juego
 			var grito;
 			var morder_queso;
 			var morder_trozo;
