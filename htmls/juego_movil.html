@@ -6,9 +6,9 @@
 		<title>Ratizide</title>
 		<!-- añadimos un icono para la pestaña-->
 		<link rel="icon" type="image/png" href="../img/favicon.png">
-		<!-- incluimos las hojas de estilo-->
+		<!-- añadimos los CSS-->
 		<link rel="stylesheet" href="../css/canvas_movil.css" />
-		<!-- incluimos los archivos de javascript -->
+		<!-- incluimos los archivos de javascript del juego y la función para guardar las puntuaciones-->
 		<script type="text/javascript" src="../js/mundo.js"></script>
 		<script type="text/javascript" src="../js/actor.js"></script>		
 		<script type="text/javascript" src="../js/sprite.js"></script>
@@ -21,10 +21,9 @@
 			//asignamos al evento de carga la función para inicializar el juego
 			window.onload = inicializar;
 					
-			//variables para el canvas
-			var cnv;
+			var cnv; //canvas
 			var spritesCargados=false;
-			var listaSprites;
+			var listaSprites; //contiene todos los sprites del juego
 			
 			//mundo de juego
 			var mundo;
@@ -40,6 +39,7 @@
 			var TAMANIOSPRITE = 128; //pixels
 			var ALTOMAPA = 9; //casillas
 			var ANCHOMAPA = 5; //casillas
+			//variables para control del movimiento
 			var DERECHA	= "derecha";
 			var IZQUIERDA = "izquierda";
 			var NOACCION = "";
@@ -47,7 +47,7 @@
 			//id del intervalo de actualizacion del estado de juego
 			var actualiza1;
 			
-			//cargamos los sprites y tiles
+			//cargamos los sprites
 			cargarSprites();
 			
 			//carga los datos y hace iniciar el juego
@@ -62,7 +62,7 @@
 				victoria = document.getElementById('victoria');
 					
 				//creamos el mundo de juego con el contexto gráfico 2D
-				mundo = new Mundo(cnv.getContext("2d"),false,true);
+				mundo = new Mundo(cnv.getContext("2d"),false,true); //jugador 1 y para movil
 				
 				//mostramos el mundo de juego por pantalla
 				actualizarEscena();
@@ -73,32 +73,36 @@
 			//inicia el juego
 			function empezar()
 			{
-				//creamos un intervalo que actualiza el estado del juego hasta que finaliza
+				//creamos un intervalo que actualiza el estado del juego cada 80ms hasta que finaliza
 				mundo.init();
 				actualiza1 = setInterval(actualizar, 80); 
 			}
 					
-			//actualiza las posiciones y comprueba colisiones
+			//actualiza el estado del juego
 			function actualizar()
 			{
-				mundo.muevePersonaje();	
+				mundo.muevePersonaje();	//actualiza la posición del ratón
+				//resuelve las colisiones: determina si se debe finalizar el juego o modificar los puntos
 				mundo.resolverColisiones();
 			}		
 			
-			//mueve el personaje y muestra por pantalla el mundo 
+			//mueve el personaje y pinta el estado actual del juego 
 			function actualizarEscena()
 			{
 				//sólo muestra el mundo cuando los sprites terminan de cargarse
 				if (spritesCargados == true)
 				{	
+					//comprueba si la casilla a la que quiere desplazarse el jugador es atravesable
 					mundo.validaActualizaMovimiento();							
-					mundo.render();
+					mundo.render(); //pinta en el canvas el estado actual del juego
 				} 
-				//volvemos a llamar la función cuando termina de pintar
-				if(mundo.state>0){
-					mundo.parar();
+				//comprobamos si el juego ha finalizado o no
+				if(mundo.state>0){ //state 1= victoria //state 2=derrota
+					mundo.parar(); //si el juego a finalizado dejamos de actualizarlo
+					//comprobamos si la puntuación está entre las mejores y en caso afirmativo la guardamos
 					setTimeout(guardarHighscore, 140, mundo.getPuntos()); 
-				}else{
+				}else{  //state 0= en juego
+					//si el juego continua actualizamos de nuevo la escena
 					requestAnimationFrame(actualizarEscena); 
 				}
 			}
@@ -116,18 +120,21 @@
 				//cuando se termina de cargar la imagen cargamos los sprites en la lista
 				imagenSprites.onload = function()
 				{
-					for(var spriteID=0;spriteID<30;spriteID++){
+					for(var spriteID=0;spriteID<30;spriteID++){ 
+						//usamos la mitad del tamaño ya que los sprites que se van a mostrar son el doble de grandes que los originales
 						listaSprites[spriteID] = new Sprite(imagenSprites, spriteID*TAMANIOSPRITE/2, 0, TAMANIOSPRITE/2, TAMANIOSPRITE/2);
 					}
 					spritesCargados=true;
 				};
 			}
 			
+			//las guarda la pulsación del botón para traducirla a movimiento
 			function leftControl()
 			{
 				mundo.pulsacion=IZQUIERDA;
 			}
 			
+			//las guarda la pulsación del botón para traducirla a movimiento
 			function rightControl()
 			{
 				mundo.pulsacion=DERECHA;
@@ -135,23 +142,26 @@
 			
 	</script>  	
 	</head>
-	<!-- asignamos la funcion escalar al evento resize para que no pierda las proporciones-->
 	<body>
-		<div class="wrapper"><!-- contexto gráfico del mundo-->
+		<!-- envoltorio para centrar el contenido-->
+		<div class="wrapper">
 			<input type='button' id="volver" class='boton' value='VOLVER' onClick="location.href='menuRatoneraMovil.html'" 
 			style="background: url('../img/flecha.png') left center no-repeat; background-size:cover;" />
 			
 			<input type='button' id="reiniciar" class='boton' value='REINICIAR' onClick="location.reload(true)" 
 			style="background: url('../img/boton.png') left center no-repeat; background-size:cover;"/>
 			
+			<!-- botón para moverse a la izquierda-->
 			<img src="..\img\left_btn.png" width='150' height='150' onclick="leftControl()"/>
 			
 			<canvas width='640' height='1152'></canvas>
 			
+			<!-- botón para moverse a la derecha-->
 			<img src="..\img\right_btn.png" width='150' height='150' onclick="rightControl()"/>
 		</div>
 	</body>
 	
+	<!-- cargamos los audios en diferentes formatos para la correcta reproducción en todos los navegadores-->
 	<audio id="grito">
 		<source src='..\audio\grito.mp3'></source>
 		<source src='..\audio\grito.ogg'></source>
@@ -182,5 +192,10 @@
 		<source src='..\audio\asco.ogg'></source>
 		<source src='..\audio\asco.wav'></source>
 	</audio>
-	
+	<!-- reproduciomos la banda sonora automáticamente y en bucle-->
+	<audio id="musica" autoplay="true" loop="true">
+		<source src='..\audio\musica_juego.mp3'></source>
+		<source src='..\audio\musica_juego.ogg'></source>
+		<source src='..\audio\musica_juego.wav'></source>
+	</audio>
 </html>
