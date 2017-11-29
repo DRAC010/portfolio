@@ -1,22 +1,23 @@
 //constructor del mundo de juego
-function Mundo(ctxt,player2, movil)
+function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugador 2, si se ejecuta desde un movil
 {	
 	//contexto gráfico donde se va a mostrar el mundo
 	var contexto=ctxt;
 	//actual entrada de teclado introducida por el jugador
 	this.pulsacion = NOACCION;
 	var puntos = 0;
-	var mouse = (player2) ? new Actor(2,2):new Actor(2,0);
-	var nivel=1;
-	//array que representa el suelo
-	var mapa = nivel1.slice();
-	var desplazamiento = 0;
-	var aux_personaje = true;
-	var aux_titulo = 200;
-	var started = false;
-	var escala = (movil) ? 2 : 1;
-	this.state = 0; //perder 1, ganar 2
-	var instrucciones = true;
+	var mouse = (player2) ? new Actor(2,2):new Actor(2,0); //sprite ratón marrón o gris dependiendo del jugador
+	var nivel=1; //nivel actual
+	var mapa = nivel1.slice(); //array que representa con números el mapa del nivel actual
+	var desplazamiento = 0; //desplazamiento vertical del nivel
+	var aux_personaje = true; //auxiliar para actualizar el sprite del ratón 
+	var aux_titulo = 200; //auxiliar para mostrar el titulo del nivel durante cierto tiempo
+	var started = false; //si el juego ha empezado o no
+	var escala = (movil) ? 2 : 1; //si se reproduce en un movil pinta el juego al doble de tamaño
+	this.state = 0; // en juego = 0, perder = 1, ganar = 2
+	var instrucciones = true; // para mostrar las instrucciones al iniciar al juego
+	
+	//inicia el juego y deja de mostrar las instrucciones
 	this.init = function(){
 		started = true;	
 		instrucciones = false;
@@ -29,21 +30,21 @@ function Mundo(ctxt,player2, movil)
 	//devuelve TRUE si la casilla se puede atravesar o FALSE en caso contrario
 	var esAtravesable= function(x)
 	{
-		var y = Math.ceil(desplazamiento);
-		var casilla = y*ANCHOMAPA+ANCHOMAPA-x-1;
-
-		if (mapa[casilla]<13 && x>-1 && x<ANCHOMAPA){
+		var y = Math.ceil(desplazamiento); 
+		var casilla = y*ANCHOMAPA+ANCHOMAPA-x-1; //casilla del mapa donde se encuentra el ratón
+		
+		//si la casilla está dentro de los límites del mapa y no hay un mueble es atravesable
+		if (mapa[casilla]<13 && x>-1 && x<ANCHOMAPA){ 
 			return true;
 		}
 		return false;
 		
 	}
 			
-	//comprueba si el personaje se puede mover en la direccion indicada
-	//y actualiza sus coordenadas de destino
+	//comprueba si el personaje se puede mover en la direccion indicada y actualiza su destino
 	this.validaActualizaMovimiento = function()
 	{
-		//calculamos la futura casilla según la dirección de movimiento
+		//calculamos la casilla de destino según la dirección de movimiento
 		var futuraX;
 		switch(this.pulsacion)
 		{
@@ -54,12 +55,12 @@ function Mundo(ctxt,player2, movil)
 				futuraX = Math.floor(mouse.x) - 1;							
 				break;
 		}
-		//comprobamos que su casilla futura es atravesable
+		//comprobamos que su casilla de destino es atravesable
 		if (esAtravesable(futuraX) == true){
-			//actualizamos las coordenadas de destino del personaje
+			//actualizamos el destino del personaje
 			mouse.xDestino = futuraX;
 		}
-		this.pulsacion = NOACCION;
+		this.pulsacion = NOACCION; 
 	}
 								
 	//desplaza el personaje hacia su destino
@@ -73,54 +74,58 @@ function Mundo(ctxt,player2, movil)
 		else if (mouse.x > mouse.xDestino)
 		{
 			mouse.x = mouse.x-0.5;
-		}	
-		if(aux_personaje){
+		}
+		
+		if(aux_personaje){ //actualiza el sprite del personaje alternadamente
 			mouse.actualizaSprite();
 		}
 		aux_personaje = !aux_personaje;
 	}
 		
-	
+	//resuelve las colisiones con los quesitos, trampas y muebles
 	this.resolverColisiones = function()
 	{
 		var y = Math.ceil(desplazamiento);
 		var x = mouse.x;
-		var casilla = y*ANCHOMAPA+ANCHOMAPA-x-1;
-		if(mapa[casilla]==2)
+		var casilla = y*ANCHOMAPA+ANCHOMAPA-x-1; //casilla actual del ratón
+		
+		if(mapa[casilla]==2) //si la casilla es una trampa
 		{
+			//audios
 			trampa.play();
 			grito.play();
-			if(player2){	
-				mouse.cambiarSprite(27);
-				mapa[casilla]=5;
-			}else{
-				mouse.cambiarSprite(29);	
-				mapa[casilla]=4;
+			
+			if(player2){ // si es el jugador 2
+				mouse.cambiarSprite(27); //dejamos de mostrar el ratón
+				mapa[casilla]=5; //sustituimos la trampa por la trampa con el ratón marrón
+			}else{ //si es el jugador 1 
+				mouse.cambiarSprite(29); //dejamos de mostrar el ratón	
+				mapa[casilla]=4; //sustituimos la trampa por la trampa con el ratón gris
 			}
-			this.state = 1;
-		}else if (mapa[casilla]==10 || mapa[casilla]==11 || mapa[casilla]==12){
-			if(player2){
-				mouse.cambiarSprite(22);
-			}else{
-				mouse.cambiarSprite(23);
+			this.state = 1; //estado de juego perdido
+		}else if (mapa[casilla]==10 || mapa[casilla]==11 || mapa[casilla]==12){ //si la casilla es un mueble
+			if(player2){  // si es el jugador 2
+				mouse.cambiarSprite(22);  //sustituimos el ratón marrón por el de los ojos en cruz
+			}else{ //si es el jugador 1 
+				mouse.cambiarSprite(23); //sustituimos el ratón gris por el de los ojos en cruz
 			}
-			grito.play();
-			this.state = 1;
-		}else if (mapa[casilla]==1){
-			puntos += 10;
-			morder_trozo.play();
-			mapa[casilla]=0;
-		}else if (mapa[casilla]==3){
-			puntos += 30;
-			morder_queso.play();
-			mapa[casilla]=0;
-		}else if (mapa[casilla]==9){
-			if(puntos >0)
+			grito.play(); //audio
+			this.state = 1; //estado de juego perdido
+		}else if (mapa[casilla]==1){ //si la casilla es un trozo de queso
+			puntos += 10; //aumentamos los puntos
+			morder_trozo.play(); //audio
+			mapa[casilla]=0; //quitamos el sprite del trozo de queso
+		}else if (mapa[casilla]==3){ //si la casilla es un queso
+			puntos += 30; //aumentamos los puntos
+			morder_queso.play(); //audio
+			mapa[casilla]=0; //quitamos el sprite del queso
+		}else if (mapa[casilla]==9){  //si la casilla es un trozo de queso malo
+			if(puntos >0) //restamos puntos si son mayores que 0
 				puntos -= 10;
-			asco.play();
-			mapa[casilla]=0;
-		}else if(desplazamiento>=(mapa.length/5) && nivel==3){
-			this.state = 2;
+			asco.play(); //audio
+			mapa[casilla]=0; //quitamos el sprite del trozo de queso
+		}else if(desplazamiento>=(mapa.length/5) && nivel==3){ //si se ha llegado al final del nivel 3
+			this.state = 2; //estado de juego ganado
 		}
 	}
 	
