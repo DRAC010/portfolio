@@ -12,8 +12,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- añadimos el CSS-->
 <link type="text/css" rel="stylesheet" href="../css/styleRatonera.css"/>
-<!-- añadimos la funcion JQuery para traducir-->
-<script src = "../js/traductor.js"></script>
 <script type="text/javascript">
 	//detectamos el dispositivo que se está usando para cargar la versión correspondiente
 	  testExp = new RegExp('Android|webOS|iPhone|iPad|' +
@@ -30,25 +28,19 @@
 <body>
 	<!-- envoltorio para centrar el contenido-->
 	<div id="menu" class="wrapper">		
-			<div id="botones_idiomas">
-				<input id="id_esp" class="idiomas" type="image" src="../img/sp_flag.png"/>
-
-				<input id="id_eng" class="idiomas" type="image" src="../img/uk_flag.png"/>
-			</div>
-		
-			<div id="botones_menu" >
-				<input type='button' class='boton' key = '1 jugador' value='1 JUGADOR' onClick="location.href='juego_1J.html'" 
+		<div id="botones_menu" >
+			<input type='button' class='boton' key = '1 jugador' value='1 JUGADOR' onClick="location.href='juego_1J.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
 			
-				<input type='button' class='boton' key = '2 jugadores' value='2 JUGADORES' onClick="location.href='juego_2J.html'" 
+			<input type='button' class='boton' key = '2 jugadores' value='2 JUGADORES' onClick="location.href='juego_2J.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
 			
-				<input type='button' class='boton' key = 'puntuaciones' value='PUNTUACIONES' onClick="location.href='puntuaciones.html'" 
+			<input type='button' class='boton' key = 'puntuaciones' value='PUNTUACIONES' onClick="location.href='puntuaciones.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
 			
-				<input type='button' class='boton' key = 'creditos' value='CREDITOS' onClick="location.href='creditos.html'" 
+			<input type='button' class='boton' key = 'creditos' value='CREDITOS' onClick="location.href='creditos.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
-			</div>		
+		</div>		
 	</div>
 	
 	<!-- añadimos los audios en diferentes formatos para su correcta reproducción en todos navegadores-->
