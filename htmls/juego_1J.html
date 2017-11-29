@@ -40,14 +40,15 @@
 			var TAMANIOSPRITE = 64; //pixels
 			var ALTOMAPA = 9; //casillas
 			var ANCHOMAPA = 5; //casillas
-			var DERECHA	= "derecha";
+			//variables para control del movimiento
+			var DERECHA= "derecha";
 			var IZQUIERDA = "izquierda";
 			var NOACCION = "";
 					
 			//id del intervalo de actualizacion del estado de juego
 			var actualiza1;
 			
-			//cargamos los sprites y tiles
+			//cargamos todos los sprites del juego
 			cargarSprites();
 			
 			//carga los datos y hace iniciar el juego
@@ -75,32 +76,37 @@
 			//inicia el juego
 			function empezar()
 			{
-				//creamos un intervalo que actualiza el estado del juego hasta que finaliza
+				//iniciamos el juego
 				mundo.init();
+				//creamos un intervalo que actualiza el estado del juego cada 80ms hasta que finaliza
 				actualiza1 = setInterval(actualizar, 80); 
 			}
 					
-			//actualiza las posiciones y comprueba colisiones
+			//actualiza el estado del juego
 			function actualizar()
 			{
-				mundo.muevePersonaje();	
-				mundo.resolverColisiones();
+				mundo.muevePersonaje();	//actualiza la posición del ratón
+				//resuelve las colisiones: determina si se debe finalizar el juego o modificar los puntos
+				mundo.resolverColisiones(); 
 			}		
 			
-			//mueve el personaje y muestra por pantalla el mundo 
+			//mueve el personaje y pinta el estado actual del juego 
 			function actualizarEscena()
 			{
 				//sólo muestra el mundo cuando los sprites terminan de cargarse
 				if (spritesCargados == true)
 				{	
+					//comprueba si la casilla a la que quiere desplazarse el jugador es atravesable
 					mundo.validaActualizaMovimiento();							
-					mundo.render();
+					mundo.render(); //pinta en el canvas el estado actual del juego
 				} 
-				//volvemos a llamar la función cuando termina de pintar
-				if(mundo.state>0){
-					mundo.parar();
+				//comprobamos si el juego ha finalizado o no
+				if(mundo.state>0){ //state 1= victoria //state 2=derrota
+					mundo.parar(); //si el juego a finalizado dejamos de actualizarlo
+					//comprobamos si la puntuación está entre las mejores y en caso afirmativo la guardamos
 					setTimeout(guardarHighscore, 140, mundo.getPuntos()); 
-				}else{
+				}else{ //state 0= en juego
+					//si el juego continua actualizamos de nuevo la escena
 					requestAnimationFrame(actualizarEscena); 
 				}
 			}
@@ -125,8 +131,7 @@
 				};
 			}
 			
-			//actualiza la ultima pulsacion realizada por el jugador
-			//traduce las entradas del teclado como acciones
+			//traduce las entradas del teclado como acciones de movimiento y las guarda para procesarlas
 			function keyControler(e)
 			{
 				//recibimos el codigo de la tecla pulsada y actualizamos la acción
@@ -142,8 +147,8 @@
 			}
 		</script>  	
 	</head>
-	<!-- asignamos la funcion escalar al evento resize para que no pierda las proporciones-->
 	<body>
+		<!-- envoltorio para centrar el contenido-->
 		<div class="wrapper">
 			 <input type='button' class='boton' value='VOLVER' onClick="location.href='menuRatonera.html'" 
 				style="background: url('../img/flecha.png') left center no-repeat; background-size:cover;"/>
@@ -155,6 +160,8 @@
 		</div>
 	</body>
 	
+	
+	<!-- cargamos los audios en diferentes formatos para la correcta reproducción en todos los navegadores-->
 	<audio id="grito">
 		<source src='..\audio\grito.mp3'></source>
 		<source src='..\audio\grito.ogg'></source>
@@ -185,6 +192,7 @@
 		<source src='..\audio\asco.ogg'></source>
 		<source src='..\audio\asco.wav'></source>
 	</audio>
+	<!-- reproduciomos la banda sonora automáticamente y en bucle-->
 	<audio id="musica" autoplay="true" loop="true">
 		<source src='..\audio\musica_juego.mp3'></source>
 		<source src='..\audio\musica_juego.ogg'></source>
