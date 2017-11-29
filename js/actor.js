@@ -1,14 +1,9 @@
-/*
-	Fecha creación: 
-	Autores: 
-*/
-
 //constructor de Actor
 function Actor(x, posicionSpriteBase)
 {
-	//posición(x) actual en el mapa expresada en casillas
+	//posición horizontal actual en el mapa expresada en casillas
 	this.x = x;
-	//posición(x) a donde se quiere mover
+	//posición horizontal a donde se quiere mover
 	this.xDestino = x;
 	//posición dentro de la lista de sprites donde está su primer sprite
 	this.posicionSpriteBase = posicionSpriteBase;
@@ -27,7 +22,7 @@ function Actor(x, posicionSpriteBase)
 		this.spriteActual = num;
 	}
 	
-	//dibuja al personaje en el contexto gráfico indicado
+	//dibuja al personaje en la posición actual en el contexto gráfico
 	this.render = function(contexto,escala)
 	{
 		listaSprites[this.posicionSpriteBase + this.spriteActual].dibuja(contexto, this.x*TAMANIOSPRITE, 8*TAMANIOSPRITE,escala);
