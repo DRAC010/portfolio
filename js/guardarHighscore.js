@@ -1,17 +1,18 @@
+//función que guarda la puntación en el localStorage si está entre las 10 mejores 
 function guardarHighscore(newscore){
-	var highscores_stored = localStorage.getItem("highscores");
-    var name = "";
-	if(highscores_stored==null){
-		name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: ");
-		localStorage.setItem("highscores", '{"scores":['+newscore+'],"names":["'+name+'"]}');
-	}else{    
-		highscores_stored = JSON.parse(highscores_stored);
-		var scores_array = highscores_stored.scores;
-		var names_array = highscores_stored.names;
-		var changed = false;
-		for(var i=0;i<scores_array.length && !changed;i++){
-			if(scores_array[i]<newscore){
-				name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: ");
+	var highscores_stored = localStorage.getItem("highscores"); //obtenemos las puntuaciones almacenadas en el localStorage
+	var name = ""; //nombre del usuario
+	if(highscores_stored==null){ //si no hay puntuaciones almacenadas la guardamos direcctamente
+		name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: "); //pedimos el nombre al usuario
+		localStorage.setItem("highscores", '{"scores":['+newscore+'],"names":["'+name+'"]}'); //guardamos en formato JSON
+	}else{   //si ya hay almacenadas
+		highscores_stored = JSON.parse(highscores_stored); //pasamos de texto a JSON
+		var scores_array = highscores_stored.scores; //obtenemos el array de puntuaciones
+		var names_array = highscores_stored.names; //obtenemos el array de nombres asociado a las puntuaciones
+		var changed = false; //si la puntuacioón no es superior a las almacenadas no se vuelve a guardar
+		for(var i=0;i<scores_array.length && !changed;i++){ //recorremos el array de puntuaciones en orden descendente
+			if(scores_array[i]<newscore){ //si la nueva puntuación es mayor
+				name = prompt("¡NUEVO RECORD! \n "+newscore+" PUNTOS \nIntroduce tu nombre: "); //pedimos el nombre
 				var aux = [];
 				var auxNames = [];
 				if(i==0){ 
