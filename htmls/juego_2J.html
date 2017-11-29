@@ -6,10 +6,10 @@
 		<title>Ratizide</title>
 		<!-- añadimos un icono para la pestaña-->
 		<link rel="icon" type="image/png" href="../img/favicon.png">
-		<!-- incluimos las hojas de estilo-->
+		<!-- añadimos los CSS-->
 		<link rel="stylesheet" href="../css/styleRatonera.css" />
 		<link rel="stylesheet" href="../css/canvas_2p.css" />
-		<!-- incluimos los archivos de javascript -->
+		<!-- incluimos los archivos de javascript del juego y la función para guardar las puntuaciones-->
 		<script type="text/javascript" src="../js/mundo.js"></script>
 		<script type="text/javascript" src="../js/actor.js"></script>		
 		<script type="text/javascript" src="../js/sprite.js"></script>
@@ -22,15 +22,14 @@
 			//asignamos al evento de carga la función para inicializar el juego
 			window.onload = inicializar;
 					
-			//variables para el canvas
-			var cnv1;
-			var cnv2;
+			var cnv1; //canvas jugador derecho
+			var cnv2; //canvas jugador izquierdo
 			var spritesCargados=false;
-			var listaSprites;
+			var listaSprites; //contiene todos los sprites del juego
 			
 			//mundo de juego
-			var mundo1;
-			var mundo2;
+			var mundo1; //jugador derecho
+			var mundo2; //jugador izquierdo
 			
 			//var sonidos
 			var grito;
@@ -43,17 +42,18 @@
 			var TAMANIOSPRITE = 64; //pixels
 			var ALTOMAPA = 9; //casillas
 			var ANCHOMAPA = 5; //casillas
-			var DERECHA	= "derecha";
+			//variables para control del movimiento
+			var DERECHA = "derecha";
 			var IZQUIERDA = "izquierda";
 			var NOACCION = "";
 					
-			//id del intervalo de actualizacion del estado de juego
+			//ids de los intervalos de actualización de estado de los juegos
 			var actualiza1,actualiza2;
 			
-			//cargamos los sprites y tiles
+			//cargamos los sprites
 			cargarSprites();
 			
-			//carga los datos y hace iniciar el juego
+			//carga los datos y hace iniciar los juegos
 			function inicializar()
 			{
 				//seleccionamos los elementos html
@@ -65,71 +65,82 @@
 				trampa = document.getElementById('trampa');
 				victoria = document.getElementById('victoria');
 					
-				//creamos el mundo de juego con el contexto gráfico 2D
+				//creamos los mundos de los juegos con el contexto gráfico 2D
 				mundo1 = new Mundo(cnv1.getContext("2d"));
 				mundo2 = new Mundo(cnv2.getContext("2d"),true);
 				
-				//mostramos el mundo de juego por pantalla
+				//mostramos los mundo de juego por pantalla
 				actualizarEscena();
 				
 				//asignamos la función encargada de manejar las entradas de teclado
 				window.addEventListener('keydown',keyControler,false);
-				setTimeout(empezar, 2500); //empieza el juego pasado el tiempo
+				setTimeout(empezar, 2500); //empiezan los juegos pasado el tiempo
 			
 			}
 			
-			//inicia el juego
+			//inicia los juegos
 			function empezar()
 			{
-				//creamos un intervalo que actualiza el estado del juego hasta que finaliza
 				mundo1.init();
 				mundo2.init();
+				//creamos los intervalos que actualizan los estados de los juegos cada 80ms hasta que finalizan
 				actualiza1 = setInterval(actualizar1, 80); 
 				actualiza2 = setInterval(actualizar2, 80); 
 			}
 					
-			//actualiza las posiciones y comprueba colisiones
+			//actualiza el estado del juego del jugador derecho
 			function actualizar1()
 			{
-				mundo1.muevePersonaje();
+				mundo1.muevePersonaje(); //actualiza la posición del ratón marrón
+				//resuelve las colisiones: determina si se debe finalizar el juego o modificar los puntos
 				mundo1.resolverColisiones();
 			}
 			
+			
+			//actualiza el estado del juego del jugador izquierdo
 			function actualizar2()
 			{
-				mundo2.muevePersonaje();	
+				mundo2.muevePersonaje(); //actualiza la posición del ratón gris	
+				//resuelve las colisiones: determina si se debe finalizar el juego o modificar los puntos
 				mundo2.resolverColisiones();
 			}		
 			
-			//mueve el personaje y muestra por pantalla el mundo 
+			//mueve los personajes y pinta los estados actuales de los juegos 
 			function actualizarEscena()
 			{
-				//sólo muestra el mundo cuando los sprites terminan de cargarse
+				//sólo muestra los muestra cuando los sprites terminan de cargarse
 				if (spritesCargados == true)
 				{	
+					//comprueba si la casilla a la que quiere desplazarse el jugador derecho es atravesable
 					mundo1.validaActualizaMovimiento();							
+					//comprueba si la casilla a la que quiere desplazarse el jugador izquierdo es atravesable
 					mundo2.validaActualizaMovimiento();							
-					mundo1.render();
-					mundo2.render();
+					mundo1.render(); //pinta en el canvas correspondiente el estado actual del juego
+					mundo2.render(); //pinta en el canvas correspondiente el estado actual del juego
 				} 
-				//volvemos a llamar la función cuando termina de pintar
-				if(mundo1.state>0){
-					mundo1.parar();
-				}
-				if(mundo2.state>0){
-					mundo2.parar();
+				
+				//comprobamos si el juego del jugador derecho ha finalizado o no
+				if(mundo1.state>0){ //state 1= victoria //state 2=derrota
+					mundo1.parar();  //si el juego a finalizado dejamos de actualizarlo
 				}
 				
+				//comprobamos si el juego del jugador izquierdo ha finalizado o no
+				if(mundo2.state>0){ //state 1= victoria //state 2=derrota
+					mundo2.parar();  //si el juego a finalizado dejamos de actualizarlo
+				}
+				
+				//si ambos jugadores han finalizado de jugar comprobamos el ganador
 				if(mundo1.state>0 && mundo2.state>0){
-					setTimeout(compruebaGanador,140)
-				}else{
+					setTimeout(compruebaGanador,140) 
+				}else{ // si alguno de los jugadores no ha terminado (state=0) actualizamos la escena de nuevo
 					requestAnimationFrame(actualizarEscena); 
 				}
 			}
 			
+			//guarda las puntuaciones si están entre las mejores y determina el ganador por los puntos
 			function compruebaGanador(){
-				var puntosGris = mundo1.getPuntos();
-				var puntosMarron = mundo2.getPuntos();
+				var puntosGris = mundo1.getPuntos(); //jugador derecho
+				var puntosMarron = mundo2.getPuntos(); //jugador izquierdo
 			
 				guardarHighscore(puntosGris);
 				guardarHighscore(puntosMarron);
@@ -162,19 +173,21 @@
 				};
 			}
 			
-			//actualiza la ultima pulsacion realizada por el jugador
-			//traduce las entradas del teclado como acciones
+			//traduce las entradas del teclado como acciones de movimiento y las guarda para procesarlas
 			function keyControler(e)
 			{
 				//recibimos el codigo de la tecla pulsada y actualizamos la acción
 				switch(e.keyCode)
 				{
+					//JUGADOR IZQUIERDO
 					case 65: //A
 						mundo2.pulsacion=IZQUIERDA;
 						break;
 					case 68: //D
 						mundo2.pulsacion=DERECHA;
 						break;
+						
+					//JUGADOR DERECHO
 					case 37: //FLECHA IZQUIERDA
 						mundo1.pulsacion=IZQUIERDA;
 						break;
@@ -185,8 +198,8 @@
 			}
 		</script>  	
 	</head>
-	<!-- asignamos la funcion escalar al evento resize para que no pierda las proporciones-->
 	<body>
+		<!--- envoltorio para centrar el contenido--->
 		<div class="wrapper">
 			<input type='button' class='boton' value='VOLVER' onClick="location.href='menuRatonera.html'" 
 			style="background: url('../img/flecha.png') left center no-repeat; background-size:cover;"/>
@@ -199,6 +212,7 @@
 		</div>
 	</body>
 	
+	<!-- cargamos los audios en diferentes formatos para la correcta reproducción en todos los navegadores-->
 	<audio id="grito">
 		<source src='..\audio\grito.mp3'></source>
 		<source src='..\audio\grito.ogg'></source>
@@ -229,6 +243,7 @@
 		<source src='..\audio\asco.ogg'></source>
 		<source src='..\audio\asco.wav'></source>
 	</audio>
+	<!-- reproduciomos la banda sonora automáticamente y en bucle-->
 	<audio id="musica" autoplay="true" loop="true">
 		<source src='..\audio\musica_juego.mp3'></source>
 		<source src='..\audio\musica_juego.ogg'></source>
