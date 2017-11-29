@@ -12,15 +12,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- añadimos el CSS-->
 <link type="text/css" rel="stylesheet" href="../css/styleRatonera.css"/>
-<!-- añadimos JQuery-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!-- añadimos la funcion JQuery para traducir-->
 <script src = "../js/traductor.js"></script>
 <script type="text/javascript">
+	//detectamos el dispositivo que se está usando para cargar la versión correspondiente
 	  testExp = new RegExp('Android|webOS|iPhone|iPad|' +
 						   'BlackBerry|Windows Phone|'  +
 						   'Opera Mini|IEMobile|Mobile' , 
 						  'i');
-
+		//si es un móvil redireccionamos
 		if (testExp.test(navigator.userAgent)){
 			location.href="menuRatoneraMovil.html";
 		}
@@ -28,9 +28,8 @@
 	
 </head>
 <body>
-
+	<!-- envoltorio para centrar el contenido-->
 	<div id="menu" class="wrapper">		
-	
 			<div id="botones_idiomas">
 				<input id="id_esp" class="idiomas" type="image" src="../img/sp_flag.png"/>
 
@@ -52,6 +51,7 @@
 			</div>		
 	</div>
 	
+	<!-- añadimos los audios en diferentes formatos para su correcta reproducción en todos navegadores-->
 	<audio id = "musica" autoplay = "true" loop = "true">
 		<source src = "../audio/musica_menu.mp3"></source>
 		<source src = "../audio/musica_menu.ogg"></source>
