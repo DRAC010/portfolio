@@ -8,36 +8,22 @@
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <!-- añadimos el CSS-->
 <link type="text/css" rel="stylesheet" href="../css/styleRatoneraMovil.css"/>
-<!-- añadimos JQuery-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<!-- añadimos la función de JQuery para traducir-->
-<script src = "../js/traductor.js"></script>
 </head>
 <body>
 	<!-- envoltorio para centrar el contenido-->
-	<div id="menu" class="wrapper">
-		 <div id="botones_idiomas">
-			<input id="id_esp" class="idiomas" type="image" src="../img/sp_flag.png"/>
-			<input id="id_eng" class="idiomas" type="image" src="../img/uk_flag.png"/>
-			
-			<div id="botones_menu">
-				<input type='button' class='boton' key = '1 jugador' value='1 JUGADOR' onClick="location.href='juego_movil.html'" 
+	<div id="menu" class="wrapper">	
+		<div id="botones_menu">
+			<input type='button' class='boton' key = '1 jugador' value='1 JUGADOR' onClick="location.href='juego_movil.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
 			
-				<input type='button' class='boton' key = 'puntuaciones' value='PUNTUACIONES' onClick="location.href='puntuaciones.html'" 
+			<input type='button' class='boton' key = 'puntuaciones' value='PUNTUACIONES' onClick="location.href='puntuaciones.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
 			
-				<input type='button' class='boton' key = 'creditos' value='CREDITOS' onClick="location.href='creditos.html'" 
+			<input type='button' class='boton' key = 'creditos' value='CREDITOS' onClick="location.href='creditos.html'" 
 				style="background: url('../img/boton.png') left center no-repeat; background-size:cover; "/>
-			</div>
-			
-		</div>
-		
-			
-	
+		</div>	
 	</div>
 	
-   
 	<!-- añadimos los audios en diferentes formatos para su correcta reproducción en todos los navegadores-->
 	<!-- hacemos que la banda sonora se reproduzca automaticamente y en bucle-->
 	<audio id = "musica" autoplay = "true" loop = "true">
