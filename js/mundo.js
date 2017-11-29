@@ -129,34 +129,33 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 		}
 	}
 	
+	//cambia al siguiente nivel
 	var cambiarNivel = function(){
-		if(desplazamiento>=(mapa.length/5)){
-			if(nivel==1){
-				mapa = nivel2.slice();
-				desplazamiento=0;	
-				aux_titulo=100;	
-				victoria.play();
-				nivel++;
-			}else if(nivel==2){
-				mapa = nivel3.slice();
-				desplazamiento=0;	
-				aux_titulo=100;	
-				victoria.play();
-				nivel++;
+		if(desplazamiento>=(mapa.length/5) && nivel < 3){ //si llega al final del nivel y no es el último
+			if(nivel==1){ //si el nivel actual es el 1
+				mapa = nivel2.slice(); //cargamos en el mapa el nivel 2	
+			}else if(nivel==2){ //si el nivel actual es el 2
+				mapa = nivel3.slice(); //cargamos en el mapa el nivel 3
 			}
+			desplazamiento=0; //reiniciamos el desplazamiento
+			aux_titulo=100;	//mostramos el titulo del nivel
+			victoria.play(); //audio
+			nivel++; //actualizamos el valor del nivel actual
 		}
 	}
 	
+	//función para pintar 'victoria'
 	var pintarVictoria = function(){
 		var tam = 60*escala;
 		contexto.font = "bold "+tam+"px arial";
 		contexto.lineWidth = 5*escala;
 		contexto.strokeStyle = 'black';
 		contexto.fillStyle="lime";
-		contexto.strokeText("VICTORY!",20*escala,300*escala);	
-		contexto.fillText("VICTORY!",20*escala,300*escala);		
+		contexto.strokeText("VICTORIA",20*escala,300*escala);	
+		contexto.fillText("VICTORIA",20*escala,300*escala);		
 	}
 	
+	//función para pintar 'game over'
 	var pintarGameOver = function(){
 		var tam = 60*escala;
 		contexto.font = "bold "+tam+"px arial";
@@ -169,6 +168,7 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 		contexto.fillText("OVER",70*escala,340*escala);
 	}	
 	
+	//función para pintar el número de nivel
 	var pintarTituloNivel = function(){
 		var tam = 50*escala;
 		if(aux_titulo>0){
@@ -176,12 +176,13 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 			contexto.fillStyle = "white";
 			contexto.lineWidth = 5*escala;
 			contexto.strokeStyle = 'black';
-			contexto.strokeText("LEVEL "+nivel,60*escala,310*escala);	
-			contexto.fillText("LEVEL "+nivel,60*escala,310*escala);	
+			contexto.strokeText("NIVEL "+nivel,60*escala,310*escala);	
+			contexto.fillText("NIVEL "+nivel,60*escala,310*escala);	
 			aux_titulo--;
 		}		
 	}
 	
+	//función para mostrar los puntos actuales al jugador
 	var pintarPuntos = function(){
 		var tam = 25*escala;
 		contexto.font = "bold "+tam+"px arial";
@@ -192,6 +193,7 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 		contexto.strokeText(puntos,10*escala,30*escala);		
 	}
 	
+	//para la actualización del juego
 	this.parar = function()
 	{
 		started = false;
@@ -207,16 +209,18 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 	//muestra el mundo por pantalla
 	this.render = function()
 	{
-		//borramos todo el contexto gráfico
+		//borramos toda la escena anterior
 		contexto.clearRect(0,0,ANCHOMAPA*TAMANIOSPRITE,ALTOMAPA*TAMANIOSPRITE);
-
+		
+		//recorremos la porción del mapa que se va a visualizar pintando los sprites correspondientes
 		for(var j=0+Math.floor(desplazamiento);j<Math.floor(desplazamiento)+ALTOMAPA+1;j++)
 		{
 			for(var i=0;i<ANCHOMAPA;i++)
 			{
+				//mostramos el suelo
 				listaSprites[7].dibuja(contexto, (ANCHOMAPA-i-1)*TAMANIOSPRITE, (ALTOMAPA-j-1+desplazamiento)*TAMANIOSPRITE,escala);
 				
-				var casilla = mapa[(j)*ANCHOMAPA+i];
+				var casilla = mapa[(j)*ANCHOMAPA+i]; //casilla del mapa a pintar
 				//trozo queso
 				if(casilla==1)
 					listaSprites[5].dibuja(contexto, (ANCHOMAPA-i-1)*TAMANIOSPRITE, (ALTOMAPA-j-1+desplazamiento)*TAMANIOSPRITE,escala);
@@ -315,10 +319,10 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 					listaSprites[12].dibuja(contexto, (ANCHOMAPA-i-1)*TAMANIOSPRITE, (ALTOMAPA-j-1+desplazamiento)*TAMANIOSPRITE,escala);
 				}
 		}
-		if(started)
+		if(started) //si el juego está iniciado desplazamos el suelo
 			desplazamiento += 0.1;
 		
-		if(instrucciones){
+		if(instrucciones){  //mostramos las instrucciones antes al inicio del juego
 			var tam= 25*escala;
 			contexto.lineWidth = 2*escala;
 			contexto.strokeStyle = 'black';
@@ -342,14 +346,14 @@ function Mundo(ctxt,player2, movil) //prametros: contexto gráfico, si es jugado
 			contexto.strokeText("izquierda y derecha",30*escala,192*escala);	
 		}
 		
-		mouse.render(contexto,escala);
-		pintarPuntos();
-		if(this.state==2)
+		mouse.render(contexto,escala); //pintamos el ratón en su posición actual
+		pintarPuntos(); //pintamos los puntos actuales 
+		if(this.state==2) //en caso de victoria mostramos el texto
 			pintarVictoria();
-		if(this.state==1)
+		if(this.state==1) //en caso de derrota mostramos el texto
 			pintarGameOver();
-		cambiarNivel();
-		pintarTituloNivel();
+		cambiarNivel(); //comprobamos si hay que cambiar de nivel
+		pintarTituloNivel(); //al inicio de cada nivel pintamos el titulo
 	}
 	
 }
