@@ -55,20 +55,21 @@
   </head>
   <body>
   
-  <!-- BARRA DE ARRIBA -->
+  <!-- BARRA DE NAVEGACIÓN -->
   
   <nav class="navbar navbar-inverse navbar-fixed-top">  
       <div class="container">	  
         <div class="navbar-header">
+	 <!-- La barra puede colapsase si el navegador es pequeño -->
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
-			<span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
             <span class="icon-bar"></span>            
            </button>
           <a class="navbar-brand">TEAM DRAC</a>                
         </div>
-		
+	   <!-- La navbar tiene tres secciones: home, about us y contact -->
      	   <div id="navbar" class="collapse navbar-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#home">Home</a></li>
@@ -79,11 +80,12 @@
 	</div>     
    </nav>  
    
-   <!-- FIN BARRA DE ARRIBA -->
+   <!-- FIN BARRA DE NAVEGACIÓN -->
  
   
- 	<!-- =================    SECCION HOME    ==================== -->		 
-  
+ <!-- =================    SECCION HOME    ==================== -->	
+  <!-- Es la pestaña por defecto -->	  
+  <!-- Al hacer click en la pestaña ''home'' de la barra, se muestra esta sección -->
   <section id="home" class="tab-content active">
   <div class="container">
 		<div class="titulo-home"> 
@@ -93,15 +95,18 @@
 	<!-- FILA DE THUMBNAILS -->
       <div class="row center-block">	
 	  <ul class="list-inline center-block text-center">	  
-	  
-				<div class="thumbnail col-md-4 col-sm-4 col-xs-4">	
+		  		<!-- Con Bootstrap logramos que si la ventana del navegador se hace más pequeña, los elementos se redistribuyan -->
+		  		<!-- La primera miniatura muestra el juego 'Ratizide' -->
+				<div class="thumbnail col-md-4 col-sm-4 col-xs-4">
+						<!-- Al hacer click, abre la página del juego en otra pestaña -->
 						<a href="./htmls/ratonera.html" target="_blank"> 				
 						<img src="./src/ratonera1.png">                              
 						<div class="caption">
 							<h3>Ratizide</h3>
 						</div>
 						</a>
-				</div>  		
+				</div>  
+		  		<!--La segunda miniatura muestra un adelanto de nuestro segundo juego -->
 				<div class="thumbnail col-md-4 col-sm-4 col-xs-4">			
 					<!--<a href="./htmls/unity.html"> -->
 						<img src="./src/comingsoon.png">   
@@ -110,38 +115,41 @@
 						</div> 			
 				</div>		
    	  </ul>	
-	</div> 	 <!-- FIN DE FILA DE THUMBNAILS-->	 	 
+	</div>
+	  <!-- FIN DE FILA DE THUMBNAILS-->	 	 
    </div><!-- /container -->	
    </section> <!-- FIN HOME -->
 	
 		
 	
 	 <!-- SECCION ABOUT US  -->	
-	 
+	  <!-- Al hacer click en la pestaña ''about us'' de la barra, se muestra esta sección --> 	 
 	<section id="about" class="tab-content hide">
 	<div class="container">
 		
-		<div class="titulo-about"> <h1>	About Us</h1></div>					
+		<div class="titulo-about"> <h1>	About Us</h1></div>
+		 <!-- Añadimos Bootstrap para ordenar los elementos dependiendo del tañao del navegador -->
 		<div class="descripcion-grupo col-lg-10 col-md-10 col-sm-8 col-xs-8">
 			<h3>We are a group of  'Videogame Design and Development' students from Madrid, Spain. </h3>
 		</div>			
 	</div>		
-
+		 <!-- Nuestras fotos y descripciones -->
 		<div class="fila-perfiles">
 			 <!-- PERFIL RAQUEL  -->	
+			 <!-- Cada perfil incluye una foto y nuestro rol en el grupo -->
 			<div class="perfiles col-lg-2 col-md-4 col-sm-4 col-xs-8">
-			<div class="imagen-perfil">
-				  <img class="img-circle" src="./src/raquel.jpg" width="150">
-			</div>			
-			<div class="descripcion ">
-				<h3>Raquel Más García </h3>
-				<h4>Programmer </h4>
-			</div>
+				<div class="imagen-perfil">
+				 	<img class="img-circle" src="./src/raquel.jpg" width="150">
+				</div>			
+				<div class="descripcion ">
+				 	<h3>Raquel Más García </h3>
+				  	<h4>Programmer </h4>
+				</div>
 			</div>				
 						
 			<div class="perfiles col-lg-2 col-md-4 col-sm-4 col-xs-8">
 				<div class="imagen-perfil">
-					  <img class="img-circle" src="./src/dani.jpg" width="150">
+					<img class="img-circle" src="./src/dani.jpg" width="150">
 				</div>			
 				<div class="descripcion ">
 					<h3>Daniel Franco Luzón </h3>
@@ -149,51 +157,55 @@
 				</div>			
 			</div>
 		
-		<div class="perfiles col-lg-2 col-md-4 col-sm-4 col-xs-8">
-			<div class="imagen-perfil">
-			  <img class="img-circle" src="./src/carol.jpg" width="150">
-			</div>			
-			<div class="descripcion ">
-				<h3>Carolina Damián Fernández</h3>
-				<h4>Web Designer, Artist </h4>
-			</div>	  
-		</div>
+			<div class="perfiles col-lg-2 col-md-4 col-sm-4 col-xs-8">
+				<div class="imagen-perfil">
+				 	<img class="img-circle" src="./src/carol.jpg" width="150">
+				</div>			
+				<div class="descripcion ">
+					<h3>Carolina Damián Fernández</h3>
+					<h4>Web Designer, Artist </h4>
+				</div>	  
+			</div>
 
-		<div class="perfiles col-lg-2 col-md-4 col-sm-4 col-xs-8">
-			<div class="imagen-perfil">
-			  <img class="img-circle" src="./src/alvaro.jpg" width="150">
-			</div>			
-			<div class="descripcion ">
-				<h3>Álvaro Navas Castillo</h3>
-				<h4>Web Designer </h4>
-			</div>	  
-		</div>	
-		</div>	
+			<div class="perfiles col-lg-2 col-md-4 col-sm-4 col-xs-8">
+				<div class="imagen-perfil">
+			 		<img class="img-circle" src="./src/alvaro.jpg" width="150">
+				</div>			
+				<div class="descripcion ">
+					<h3>Álvaro Navas Castillo</h3>
+					<h4>Web Designer </h4>
+				</div>	  
+			</div>	
+		</div><!-- Fin fila perfiles -->	
 	</section>	
 	<!-- FIN ABOUT US  -->	
 	
 	
 	<!-- SECCION CONTACT  -->
+	 <!-- Al hacer click en la pestaña ''contact'' de la barra, se muestra esta sección --> 
 	<section id="contact" class="tab-content hide">	
 	<div class="container">
 		<div class="titulo-contact"> <h1> Contact </h1>
-			<div class="contactar">
-			
+			<div class="contactar">	
+				 <!-- Se muestran dos iconos, uno de correo y otro de nuestro canal de YouTube --> 
+				 <!-- Usando Bootstrap conseguimos que los iconos se distribuyan dependiendo del tamaño del navegador --> 
 				<div class="rrss col-md-6 col-sm-6 col-xs-6" >
+					 <!-- Se abre nuestra aplicación de correo por defecto para mandar un mail --> 
 					<a href="mailto:teamdrac010@gmail.com" target="_blank" style="color:#FFFFFF;">
-					  <div>
+					 	<div>
 							<img class="img-circle" src="./src/mail.jpg" width="80" role="button"></img>
 							<h4>e-mail</h4>
-					  </div>
+					 	</div>
 					 </a> 
 				</div>
 								
 				<div class="rrss col-md-6 col-sm-6 col-xs-6" >
+					 <!-- Abre en otra pestaña nuestro canal de YouTube --> 
 					<a href="https://www.youtube.com/channel/UCFQNH7NS6snQhWINuBGS_SA" target="_blank" style="color:#FFFFFF;"> 
-					  <div>
+					 	<div>
 							<img class="img-circle" src="./src/youtube.png" width="80" role="button"></img>
 							<h4 >YouTube</h4>
-					  </div>
+					 	</div>
 					</a>
 				</div>					
 			</div>
@@ -202,6 +214,7 @@
 	</section>		
 	<!-- FIN CONTACT  -->	
 	
+	 <!-- Pie de página fijo al final--> 
 	<footer class="site-footer fixed-bottom">
 		<p background: white; >&copy; 2017 Team DRAC </p>	
 	</footer> 	
