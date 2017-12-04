@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>  
+<head>  
 	<meta name="author" content="Carolina Damián Fernández">
-    <meta name="description" content="Ratizide"> 
+    	<meta name="description" content="Ratizide"> 
 	<link rel = "icon" href = "../src/queso.png">
 	
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ratizide</title>
-  
+    	<meta charset="utf-8">
+   	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	 <meta name="viewport" content="width=device-width, initial-scale=1">
+  	 <title>Ratizide</title>
+  	 <!-- Añadimos librerías JQuery, Bootstrap y archivo CSS --> 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/style.css" >
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-	 </head>
-  <body>
+</head>
+ <body>
   	<div class="container ">
-			<div class="container-ratonera">
+		<div class="container-ratonera">
+			 <!-- Título del juego --> 
 			<h1>Ratizide</h1>
 			
 				
-			<!-- =================      CAROUSEL     ==================== -->
+		<!-- =================      CAROUSEL     ==================== -->
+		<!-- El carousel muestra imágenes del juego. Puede pasar de imagen automáticamente o navegar por ellas con las flechas laterales. --> 
 		<div class="fila-carousel center-block col-lg-12 ">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			  <ol class="carousel-indicators">
@@ -33,27 +35,28 @@
 
 			  <div class="carousel-inner">
 				<div class="item active">
-									<img alt="item1" src="../src/multi.png" />
-									<div class="carousel-caption">
-										<h3>Multiplayer</h3>
-									</div>
+					<img alt="item1" src="../src/multi.png" />
+					<div class="carousel-caption">
+						<h3>Multiplayer</h3>
+					</div>
 				</div>
 
 				<div class="item">
-									<img alt="item2" src="../src/unjug.png" />
-									<div class="carousel-caption">
-										<h3>One Player</h3>
-									</div>
+					<img alt="item2" src="../src/unjug.png" />
+					<div class="carousel-caption">
+						<h3>One Player</h3>
+					</div>
 				</div>
 
 				<div class="item">
-									<img alt="item3" src="../src/gameover.png" />
-									<div class="carousel-caption">
-										<h3>Mobile Version</h3>
-									</div>
+					<img alt="item3" src="../src/gameover.png" />
+					<div class="carousel-caption">
+						<h3>Mobile Version</h3>
+					</div>
 				</div>
 			  </div>
-			  
+				
+			   <!--Flechas de desplazamiento --> 
 			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			  </a>
@@ -61,34 +64,33 @@
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			  </a>
 			</div>
-		</div>
+		</div>  <!-- FIN CAROUSEL --> 
 			
 
-	<div class="contenido-fila center-block col-lg-12">
-			 										
+		<div class="contenido-fila center-block col-lg-12">
+			 	 <!-- Descripción del juego --> 									
 				<div class="descripcion-imagen col-lg-8 col-md-8 col-sm-7 col-xs-8">
 					<h3>Our first game is here!</h3>
 					<h4>Play as Mousy to get all the possible food, avoiding mouse traps and rotten cheese! </h4>				
 				</div>
 			
-	</div>
-	
-	<div class="contenido-fila center-block col-md-8 col-xs-8" >	
-		<div class="botonPlay center-block" onclick="location.href='menuRatonera.html'">
-			<img class="img-responsive center-block" src="../src/botonPlay.png" height ="150" width="350"> </img>
 		</div>
-	</div>
+			
+		 <!-- Al hacer click en el botón, nos lleva al menñu de inicio del juego--> 
+		<div class="contenido-fila center-block col-md-8 col-xs-8" >	
+			<div class="botonPlay center-block" onclick="location.href='menuRatonera.html'">
+				<img class="img-responsive center-block" src="../src/botonPlay.png" height ="150" width="350"> </img>
+			</div>
+		</div>
 
 	
-	</div> 
+		</div> 
 	</div> <!-- FIN CONTAINER  -->
 	
+	 <!-- Pie de página fijo --> 
 	<footer class="site-footer fixed-bottom">
 		<p background: white; >&copy; 2017 Team DRAC </p>	
-	</footer> 
+	</footer> 	
 	
-	
-  </body>
-  
-  
+ </body>  
 </html>
