@@ -2,43 +2,49 @@
 <html lang="en">
   <head>  
 	<meta name="author" content="Carolina Damián Fernández">
-    <meta name="description" content="Portfolio"> 
+	<meta name="description" content="Portfolio"> 
 	<link rel = "icon" href = "./src/queso.png">
 	
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Team DRAC</title>
-  
+  	<meta charset="utf-8">
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+   	<title>Team DRAC</title>
+  	
+	 <!-- añadimos bootstrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	 <!-- añadimos el archivo CSS-->
 	<link rel="stylesheet" href="./css/style.css" >
+	 <!-- añadimos JQuery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 		
 	<script>
+	//Controla la barra de navegación
 	$(document).ready(function() {
 		$(".navbar-nav li a").click(function(event) {
+			//Al hacer click en un menú desplegable, lo esconde.
 			$(".navbar-collapse").collapse('hide');
 		});
 		$('.navbar-nav > li > a').click(function(event){
-		event.preventDefault();//stop browser to take action for clicked anchor
+		//Cancela el evento si es cancelable sin detener el resto del funcionamiento
+		event.preventDefault();
 
-		//get displaying tab content jQuery selector
+		//Selecciona la pestaña pulsada con un selector jQuery 
 		var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');
 
 		//find actived navigation and remove 'active' css
 		var actived_nav = $('.navbar-nav > li.active');
 		actived_nav.removeClass('active');
 
-		//add 'active' css into clicked navigation
+		//Añade 'active' al css
 		$(this).parents('li').addClass('active');
 
-		//hide displaying tab content
+		//Esconde la pestaña seleccionada
 		$(active_tab_selector).removeClass('active');
 		$(active_tab_selector).addClass('hide');
 
-		//show target tab content
+		//Muestra la pestaña añadiendo 'active'
 		var target_tab_selector = $(this).attr('href');
 		$(target_tab_selector).removeClass('hide');
 		$(target_tab_selector).addClass('active');
@@ -46,17 +52,6 @@
 	  });
 	</script>
 	
-	<script>
-		$(document).ready(function() {
-		  $("[rel='tooltip2']").tooltip();
-		  $('.mydemo').hover(function(){    
-		  $(this).find('figcaption').slideDown(350); //.fadeIn(350)  
-				},   
-		  function(){$(this).find('figcaption').slideUp(300); //.fadeOut(300) 
-				}   
-				); 
-		});
-	</script> 
   </head>
   <body>
   
