@@ -1,7 +1,11 @@
-		html, body{
+		html{
 			background-image: url('../src/background.jpg') ;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
+		}
+		
+		body{
+			background-color: transparent;
 		}
 		
 		
