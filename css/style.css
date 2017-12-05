@@ -1,6 +1,7 @@
-		body{
-			background-image: url('../src/background.jpg');
-			-webkit-background-size: cover;
+		html, body{
+			background-image: url('../src/background.jpg') ;
+			background-size: cover;
+			 height: 100%;
 		}
 		
 		
