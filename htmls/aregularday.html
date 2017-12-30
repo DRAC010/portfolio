@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+	<meta name="author" content="Carolina Damián Fernández">
+    	<meta name="description" content="A Regular Day"> 
+	<link rel = "icon" href = "../src/queso.png">
+	
+    	<meta charset="utf-8">
+   	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	 <meta name="viewport" content="width=device-width, initial-scale=1">
+  	 <title>Ratizide</title>
+  	 <!-- Añadimos librerías JQuery, Bootstrap y archivo CSS --> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/style.css" >
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+</head>
+ <body>
+  	<div class="container ">
+		<div class="container-ratonera">
+			 <!-- Título del juego --> 
+			<img class="img-responsive center-block " src="../src/tituloJuegoDay.png" height ="150" width="450"> </img>
+			
+				
+		<!-- =================      CAROUSEL     ==================== -->
+		<!-- El carousel muestra imágenes del juego. Puede pasar de imagen automáticamente o navegar por ellas con las flechas laterales. --> 
+		<div class="fila-carousel center-block col-lg-12 ">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			  <ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			  </ol>
+
+			  <div class="carousel-inner">
+				<div class="item active">
+					<img alt="item1" src="../src/oficina.png" />
+					<div class="carousel-caption">
+						<h3>Level 1</h3>
+					</div>
+				</div>
+
+				<div class="item">
+					<img alt="item2" src="../src/isla.png" />
+					<div class="carousel-caption">
+						<h3>Level 2</h3>
+					</div>
+				</div>
+
+				<div class="item">
+					<img alt="item3" src="../src/desierto.png" />
+					<div class="carousel-caption">
+						<h3>Level 3</h3>
+					</div>
+				</div>
+			  </div>
+				
+			   <!--Flechas de desplazamiento --> 
+			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			  </a>
+			  <a class="carousel-control right" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			  </a>
+			</div>
+		</div>  <!-- FIN CAROUSEL --> 
+			
+
+		<div class="contenido-fila center-block col-lg-12">
+			 	 <!-- Descripción del juego --> 									
+				<div class="descripcion-imagen col-lg-8 col-md-8 col-sm-7 col-xs-8">
+					<h3>Our first game in Unity 3D!</h3>
+					<h4>Explore the worlds and try to resolve all the puzzles to continue! </h4>				
+				</div>
+			
+		</div>
+			
+		 <!-- Al hacer click en el botón, nos lleva al menñu de inicio del juego--> 
+		<div class="contenido-fila center-block col-md-8 col-xs-8" >	
+			<a class="botonPlay center-block" href='https://teamdrac.itch.io/a-regular-day' target='_blank' ">
+				<img class="img-responsive center-block" src="../src/botonPlayDay.png" height ="150" width="350"> </img>
+			</a>
+		</div>
+
+	
+		</div> 
+	</div> <!-- FIN CONTAINER  -->
+	
+	 <!-- Pie de página fijo --> 
+	<footer class="site-footer fixed-bottom col-md-10 col-xs-8">
+		<p background: white; > 2017 Team DRAC </p>	
+	</footer> 	
+	
+ </body>  
+</html>
